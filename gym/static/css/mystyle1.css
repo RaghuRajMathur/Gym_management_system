@@ -14,3 +14,9 @@
   background-color: orange;
   border-radius: 30px;
 }
+
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
