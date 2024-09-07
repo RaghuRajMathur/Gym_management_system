@@ -2,6 +2,7 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href='https://fonts.googleapis.com/css?family=Erica+One' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -13,12 +14,35 @@
 
 
 <title>Gravity Health Club </title>
+<head>
+  <style>
+    html, body {
+  margin : 0;
+  padding : 0;
+  font-family : arial, sans-serif;
+  background-color : #15242d;
+  height: 100%;height:auto;
+  min-width: 100%;width:auto;
+  font-size: 15px;
+  color: #959595;
+}
+.txtdesign{
+text-align:center;
+
+font-size:60px;
+color:#000000;
+font-family:Erica One;
+-webkit-text-stroke:1px #FFF700;
+text-shadow:0px 1px 0 #FFF700,0px 2px 1px #FFF700,0px 3px 0 #B0AA00,0px 4px 0 #B0AA00,0px 5px 0 #B0AA00,0px 6px 0 #B0AA00,0px 7px 0 #B0AA00,0px 8px 1px #B0AA00,0px 9px 0 #6B6700,0px 10px 0 #6B6700,0px 11px 0 #6B6700,0px 12px 1px #6B6700,0px 13px 0 #545100,0px 14px 0 #545100,0px 15px 0 #545100,0px 16px 1px #545100,0px 17px 0 #000000,0px 18px 0 #000000,0px 19px 0 #000000,0px 20px 0 #000000,0px 21px 0 #000000,0px 22px 2px #000000;
+}
+  </style>
+</head>
 
 <!-- Start Navigation -->
-<nav class="navbar navbar-expand-sm navbar-light bg-dark">
+<nav class="navbar navbar-expand-sm navbar-light bg-dark mynav">
   <div class="container">
   <a class="navbar-brand" href="{% url 'admin_home' %}">
-      <span style="color : rgb(0, 0, 0); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Gravity Health Club</span></a>
+    <h1 class="txtdesign">Gym Sync</h1></a>
 
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">

@@ -11,6 +11,12 @@ body {
 }
 
 /* Navbar */
+.navclass{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
 .nav-links {
     list-style-type: none;
     display: none;
@@ -40,10 +46,11 @@ body {
 }
 
 .nav-container {
-    padding: 0 20px;
+    /* padding: 0 20px; */
     background: rgba(51, 51, 51, 0.8);
     display: flex;
     justify-content: space-between;
+    width: 100%;
 }
 
 .nav-container img {
