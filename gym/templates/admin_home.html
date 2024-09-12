@@ -99,6 +99,10 @@
   background-color: var(--background-color);
   flex-direction: column;
 }
+.service-container{
+    display: flex;
+    flex-direction: column;
+}
 .row1,.row2{
   display: flex;
   flex-direction: row;
@@ -244,14 +248,14 @@
 -->
     <section class="skills" id="skills">
         <h1 class="heading"><span class="admin">Admin </span><span class="me">Services</span></h1>
-        <div class="container">
+        <div class="service-container">
             <div class="row1">
                 <div class="col-sm-5">
                     <div class="card">
                         <div class="card-body">
                             <a href="{% url 'viewEnquiry' %}">
                             <i class="fa-solid fa-book-open-reader icon"></i>
-                            <h4 class="service-text">Total Enquiry</h4>
+                            <h4 class="service-text">Enquiries</h4>
                         </a>
                         </div>
                       </div>

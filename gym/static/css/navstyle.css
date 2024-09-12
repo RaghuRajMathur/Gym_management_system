@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    /* background: url('laptop.jpg'); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar: sticky with a white blur effect */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%; /* Make sure it stretches across the screen */
+    /* background-color: rgba(255, 255, 255, 0.8); Semi-transparent white */
+    background-color: rgba(31, 36, 45, 0.8); /* Semi-transparent #1f242d*/
+    backdrop-filter: blur(12px);
+    color: teal; /* Teal text color */
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensure navbar stays on top of other content */
+}
+
+nav ul {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-logo {
+    margin-left: 10px;
+    align-self: center;
+    height: auto; /* Adjust height to fit the navbar */
+    width: auto;  /* Maintain aspect ratio */
+    object-fit: contain; /* Ensure it fits without distortion */
+    background: transparent; /* No background */
+}
+
+nav li {
+    height: 50px;
+}
+
+nav img {
+    max-height: 50px; /* Ensure the image doesn’t exceed the navbar height */
+}
+
+nav a {
+    height: 100%;
+    padding: 0 30px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: teal; /* Text color teal to contrast the white background */
+}
+
+nav a:hover {
+    background-color: rgba(240, 240, 240, 0.1); /* Lighter hover effect */
+}
+
+nav li:first-child {
+    margin-right: auto;
+}
+
+.site-name {
+    margin: 10px 5px 5px 10px;
+    color: aquamarine;
+}
+
+/* Sidebar style with transition */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -250px; /* Initially hidden off-screen */
+    height: 100vh;
+    width: 250px;
+    background-color: rgba(31, 36, 45, 0.5); /* Semi-transparent dark background */
+    backdrop-filter: blur(20px); /* Glass effect with stronger blur */
+    color: teal;
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    transition: right 0.5s ease;
+}
+
+.sidebar li {
+    width: 100%;
+}
+
+.sidebar a {
+    width: 100%;
+    color: #F7EF8A;
+}
+
+nav svg {
+    fill: #F7EF8A; /* Change SVG fill color to aquamarine */
+}
+
+/* Menu button visible on all screen sizes */
+.menu-button {
+    display: block;
+}
+
+/* Optional media query for smaller screens */
+@media(max-width: 400px) {
+    .sidebar {
+        width: 100%;
+    }
+}
