@@ -6,6 +6,25 @@
     <title>Gravity Health CLub - Admin Dashboard</title>
     <link rel="stylesheet" id="css-main" href="{% static 'css1/codebase.min.css' %}">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Alkatra:wght@500&family=Cinzel:wght@500&family=Gruppo&family=Poppins:ital,wght@0,300;1,400&family=Roboto+Condensed:ital@1&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
+        :root{
+    --background-color:#1f242d;
+    --secondary-bg-color:#323946;
+    --text-color:#fff;
+    --theme-color:turquoise;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-family: 'Poppins',sans-serif;
+    scroll-behavior: smooth;
+    cursor: default;
+}
         body {
             background-color: #f0f2f5;
             font-family: 'Arial', sans-serif;
@@ -72,14 +91,112 @@
         .bg-gd-sea {
             background-color: #17a2b8;
         }
+
+        .skills{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: var(--background-color);
+  flex-direction: column;
+}
+.service-container{
+    display: flex;
+    flex-direction: column;
+}
+.row1,.row2{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  gap: 2.5rem;
+  margin-bottom: 3.5rem;
+}
+.card{
+  display: flex;
+  flex: 1 1 30rem;
+  padding: 1.5rem;
+  border: 0.1rem solid white;
+  /*border: .2rem solid var(--secondary-bg-color);*/
+  background-color: var(--secondary-bg-color);
+  border-radius: 2rem;
+  transition: .5sec ease;
+}
+.heading{
+  font-size: 4.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 4rem;
+  margin-top: 4rem;
+}
+.me{
+  color: var(--theme-color);
+}
+.admin{
+    color: var(--text-color);
+}
+.icon{
+  justify-content: center;
+  display: flex;
+  margin-bottom: 1.5rem ;
+  background-image: linear-gradient(
+    -225deg,
+    #f3a2ba 0%,
+    #ac7ddd 29%,
+    turquoise 67%,
+    rgb(207, 207, 80) 100%
+  );
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 4s linear infinite;
+  font-size: 7rem;
+}
+.service-text{
+    justify-content: center;
+  display: flex;
+  margin-bottom: 1.5rem ;
+  background-image: linear-gradient(
+    -225deg,
+    #f3a2ba 0%,
+    #ac7ddd 29%,
+    turquoise 67%,
+    rgb(207, 207, 80) 100%
+  );
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 4s linear infinite;
+  font-size: 3rem;
+}
+.card-body{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  color: var(--theme-color);
+}
+.card:hover{
+  transform: scale(1.02);
+  border-color: var(--theme-color);
+  cursor: copy;
+}
+@keyframes textclip {
+    to {
+      background-position: 200% center;
+    }
+  } 
     </style>
 </head>
 <body>
-    <br><br><br>
     <!-- Page Content -->
+     <!--
     <div class="content">
         <div class="row gutters-tiny invisible" data-toggle="appear">
-            <!-- Row #1 -->
+           
             <div class="col-6 col-md-3 col-xl-4">
                 <a class="block text-center" href="{% url 'viewEnquiry' %}">
                     <div class="block-content ribbon ribbon-bookmark ribbon-crystal ribbon-left bg-gd-dusk">
@@ -128,6 +245,56 @@
     </div>
     <br><br><br>
     </div>
+-->
+    <section class="skills" id="skills">
+        <h1 class="heading"><span class="admin">Admin </span><span class="me">Services</span></h1>
+        <div class="service-container">
+            <div class="row1">
+                <div class="col-sm-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <a href="{% url 'viewEnquiry' %}">
+                            <i class="fa-solid fa-book-open-reader icon"></i>
+                            <h4 class="service-text">Enquiries</h4>
+                        </a>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <a href="{% url 'viewPlan' %}">
+                            <i class="fa-solid fa-book icon"></i>
+                            <h4 class="service-text">Plans</h4>
+                            </a>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <div class="row2">
+                <div class="col-sm-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <a href="{% url 'viewEquipment' %}">
+                            <i class="fa-solid fa-dumbbell icon"></i>
+                            <h4 class="service-text">Equipments</h4>
+                        </a>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <a href="{% url 'viewMember' %}">
+                            <i class="fa-solid fa-people-group icon"></i>
+                            <h4 class="service-text">Members</h4>
+                        </a>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- END Page Container -->
 
     <!-- Codebase Core JS -->

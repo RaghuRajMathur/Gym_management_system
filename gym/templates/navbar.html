@@ -4,36 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fitness</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'css/navstyle.css' %}">
     <script src="{ % static 'js/script.js' %}"></script>
     <script src="https://kit.fontawesome.com/332a215f17.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
-<nav>
-      <div class="nav-container">
-         <img src="{% static 'images/logomain.jpg' %}" alt="logo" class="logo">
-           <div class="btn">
-                 <div class="line1"></div>
-                 <div class="line2"></div>
-                 <div class="line3"></div>
-           </div>
-      </div>
-         <!--For links-->
-         <ul class="nav-links" style="background-color : #181118;">
-             <li><a href="#home">Home</a></li>
-             <li><a href="#about">About</a></li>
-             <li><a href="#workout">Gravity Health Club </a></li>
-             <li><a href="#testimonial">Feedback</a></li>
-             <li><a href="{% url 'contact' %}">Contact</a></li>
-             <li><a href="{% url 'admin_login' %}">Admin Login</a></li>
-         </ul>
-         <!---End of links-->
-     </nav>
-    <!---Jquery-->
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <!---Script js-->
-     <script src="{ % static 'js/script.js' %}"></script>
+    <nav>
+        <ul class="sidebar">
+          <li onclick="hideSidebar()">
+            <a href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26">
+                <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/>
+              </svg>
+            </a>
+          </li>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#workout">Gravity Health Club</a></li>
+          <li><a href="#testimonial">Feedback</a></li>
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+          <li><a href="{% url 'admin_login' %}">Admin Login</a></li>
+        </ul>
+        <ul>
+          <li><img src="{% static 'images/gymlogo.png' %}" alt="Gym logo" class="navbar-logo"></li>
+           <!-- <li><h2 class="site-name">GYM  <i>  Sync</i></h2></li> -->
+          <li class="menu-button" onclick="showSidebar()">
+            <a href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26">
+                <path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      
+    
+      <script>
+        function showSidebar() {
+          const sidebar = document.querySelector('.sidebar');
+          sidebar.style.right = '0';  // Slide in from the right
+        }
+      
+        function hideSidebar() {
+          const sidebar = document.querySelector('.sidebar');
+          sidebar.style.right = '-250px';  // Slide out to the right
+        }
+      </script>
 </body>
 </html>
