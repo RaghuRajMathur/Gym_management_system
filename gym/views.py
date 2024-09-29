@@ -24,7 +24,7 @@ def admin_login(request):
                 error = "yes"
         except:
             error = "yes"
-    return render(request,'admin_login.html', locals())
+    return render(request,'login_admin.html', locals())
 
 def admin_home(request):
     if not request.user.is_staff:
@@ -52,6 +52,31 @@ def contact(request):
         except:
             error = "yes"
     return render(request,'contact.html', locals())
+
+def member_enquiry(request):
+    if request.method == "POST":
+        name = request.POST.get('name')
+        contact = request.POST.get('contact')
+        emailid = request.POST.get('emailid')
+        branch = request.POST.get('branch')
+        issue = request.POST.get('issue')
+        message = request.POST.get('message')
+
+        # Save the data to the MemberEnquiry model
+        enquiry = MemberEnquiry(
+            name=name,
+            contact=contact,
+            emailid=emailid,
+            branch=branch,
+            issue=issue,
+            message=message
+        )
+        enquiry.save()
+
+        # Redirect to the same form with a success message (or to another page)
+        return redirect('member_enquiry')
+
+    return render(request, 'member_enquiry.html')
 
 def addEnquiry(request):
     if not request.user.is_authenticated:
@@ -308,9 +333,18 @@ def changePassword(request):
             error = "yes"
     return render(request,'changePassword.html', locals())
 
+def member_queries(request):
+    # Fetch all member queries from the database
+    queries = MemberEnquiry.objects.all()
+    
+    # Render the queries to a template
+    return render(request, 'member_queries.html', {'queries': queries})
+
 def Logout(request):
     logout(request)
     return redirect('index')
+
+
 
 
 

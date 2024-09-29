@@ -1,0 +1,214 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+
+html,
+body {
+  display: flex; /* Change to flexbox */
+  height: 100%;
+  width: 100%;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  margin: 0;
+  padding: 0;
+  background: -webkit-linear-gradient(left, #1a1919, #d3d0d1);
+}
+
+.wrapper {
+  background: rgba(55, 54, 54, 0.502);
+  max-width: 450px; /* Set max width */
+  width: 100%;
+  padding: 30px;
+  border-radius: 4em;
+  box-shadow: rgba(254, 156, 19, 0.148) 0 7px 50px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-inner {
+  width: 100%;
+}
+
+.form-inner form {
+  width: 100%;
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.field {
+  margin-top: 20px;
+  position: relative;
+}
+
+select.form-control {
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.6
+  ); /* Match background color with other inputs */
+  color: rgba(255, 255, 255, 0.7); /* Match text color */
+  border: 1px solid #9c9696d3; /* Match border color */
+  padding: 10px;
+  font-size: 17px;
+  border-radius: 5px;
+  width: 100%; /* Ensures full width like other input fields */
+  appearance: none; /* Removes default styling (may differ based on browser) */
+}
+
+select.form-control option {
+  background-color: rgba(0, 0, 0, 0.8); /* Dropdown options background color */
+  color: #fff; /* Text color for options */
+}
+
+/* Optional: Customize dropdown arrow */
+select.form-control::-ms-expand {
+  display: none; /* Removes default arrow in IE */
+}
+
+select.form-control {
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='rgba(255, 255, 255, 0.7)' d='M2 0L0 2h4z'/%3E%3C/svg%3E"); /* Adds custom arrow */
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 10px;
+}
+
+.form-control {
+  background: rgba(255, 255, 255, 0); /* Transparent background */
+  color: #fff;
+  font-size: 17px;
+  padding: 10px;
+  width: 100%; /* Ensures the input fields span the full width */
+  border: 1px solid #9c9696d3;
+  transition: all 0.3s ease;
+  border-radius: 5px; /* Added border-radius for better visual appeal */
+}
+
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.572);
+}
+
+.form-control:focus {
+  border-color: rgba(254, 156, 19, 0.5);
+  box-shadow: 0 0 8px rgba(254, 156, 19, 0.5);
+  background: rgba(255, 255, 255, 0);
+  backdrop-filter: blur(5px);
+}
+
+.form-group {
+  margin-bottom: 20px;
+  width: 100%; /* Ensures all form groups span full width */
+}
+
+label {
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 5px; /* Adds space between label and input field */
+  display: block; /* Ensures label is displayed above the input field */
+}
+
+.btn {
+  background-color: transparent;
+  border-radius: 10em;
+  box-sizing: border-box;
+  border: 2px solid #6f6a6a76;
+  color: rgba(255, 255, 255, 0.572);
+  padding: 10px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 300ms;
+  width: 100%; /* Ensure buttons span full width */
+}
+
+.btn:hover {
+  color: rgba(254, 156, 19, 0.5);
+  background-color: #1a1a1a;
+  box-shadow: rgba(254, 156, 19, 0.25) 0 10px 20px;
+}
+
+.btn:active {
+  transform: scale(1);
+}
+
+form a {
+  display: inline-block;
+  appearance: none;
+  background-color: transparent;
+  border-radius: 0.9375em;
+  box-sizing: border-box;
+  color: rgba(255, 255, 255, 0.572);
+  cursor: pointer;
+  font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 20px 0;
+  padding: 2.5px 40px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  will-change: transform;
+}
+
+/* Hover effect for "Back to Home" */
+form a:hover {
+  color: rgba(254, 156, 19, 0.25);
+  background-color: #1a1a1a;
+  box-shadow: rgba(254, 156, 19, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+form a:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+.card {
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 15px;
+  padding: 20px;
+  width: 600px;
+  height: 720px;
+}
+
+.card-body {
+  padding: 40px;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+  margin-bottom: 30px;
+  font-family: "Poppins", sans-serif;
+  font-size: 2rem;
+}
+
+/* Additional form adjustments for better alignment */
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.form-group {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    max-width: 100%;
+    padding: 20px;
+  }
+}

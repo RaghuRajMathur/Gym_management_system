@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from datetime import date
 # Create your models here.
 
 class Contact(models.Model):
@@ -13,6 +13,18 @@ class Contact(models.Model):
     isread = models.CharField(max_length=10,null=True)
     def __str__(self):
         return self.name
+
+class MemberEnquiry(models.Model):
+    # Fields for the form data
+    name = models.CharField(max_length=255)
+    contact = models.CharField(max_length=20)
+    emailid = models.EmailField(max_length=255)
+    branch = models.CharField(max_length=255)
+    issue = models.CharField(max_length=255)
+    message = models.TextField()
+
+    # Automatically add timestamp when an enquiry is submitted
+    submitted_at = models.DateTimeField(auto_now_add=True)
 
 class Enquiry(models.Model):
     name = models.CharField(max_length=150, null=True)

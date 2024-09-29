@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from gym.views import *
 from django.conf import settings
+from gym import views
 
 
 urlpatterns = [
@@ -24,6 +25,8 @@ urlpatterns = [
     path('', index, name='index'),
     path('admin_login', admin_login, name='admin_login'),
     path('contact', contact, name='contact'),
+    path('member_enquiry/', member_enquiry, name='member_enquiry'),  # Add this line
+    path('member-queries/', views.member_queries, name='member_queries'),
     path('admin_home', admin_home, name='admin_home'),
     path('addEnquiry', addEnquiry, name='addEnquiry'),
     path('viewEnquiry', viewEnquiry, name='viewEnquiry'),

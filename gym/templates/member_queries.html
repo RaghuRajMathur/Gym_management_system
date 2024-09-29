@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Queries</title>
+</head>
+<body>
+    <h1>Member Queries</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Email</th>
+                <th>Branch</th>
+                <th>Issue</th>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for query in queries %}
+            <tr>
+                <td>{{ query.name }}</td>
+                <td>{{ query.contact }}</td>
+                <td>{{ query.emailid }}</td>
+                <td>{{ query.branch }}</td>
+                <td>{{ query.issue }}</td>
+                <td>{{ query.message }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,125 @@
+{% load static %} {% if error == "no" %}
+<script>
+  alert("Your Enquiry has been sent. Our team will contact you soon.");
+  window.location.href = "{% url 'member_enquiry' %}";
+</script>
+{% endif %} {% if error == "yes" %}
+<script>
+  alert("Something went wrong, please try again.");
+</script>
+{% endif %}
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Member Issue Form</title>
+    <link rel="stylesheet" href="{% static 'css/member_enq.css' %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/332a215f17.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <br /><br /><br />
+    <section>
+      <div class="container py-5">
+        <div class="card">
+          <div class="card-body">
+            <h1 class="font-weight-light text-center py-3">
+              <b>Member Enquiry</b>
+            </h1>
+            <div class="row">
+              <div class="col-lg-6 offset-lg-3 col-md-12 col-sm-12">
+                <form method="post" class="form-inner">
+                  {% csrf_token %}
+                  <div class="form-row">
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                      <label>Full Name</label>
+                      <input
+                        type="text"
+                        name="name"
+                        class="form-control"
+                        placeholder="Full Name"
+                        required
+                      />
+                    </div>
+
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                      <label>Contact Number</label>
+                      <input
+                        type="text"
+                        name="contact"
+                        class="form-control"
+                        placeholder="Contact Number"
+                        required
+                      />
+                    </div>
+
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                      <label>Email ID</label>
+                      <input
+                        type="email"
+                        name="emailid"
+                        class="form-control"
+                        placeholder="Email ID"
+                        required
+                      />
+                    </div>
+
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                      <label>Select Your Branch</label>
+                      <select name="branch" class="form-control" required>
+                        <option value="" disabled selected>
+                          Select Branch
+                        </option>
+                        <option value="Branch 1">Branch 1</option>
+                        <option value="Branch 2">Branch 2</option>
+                        <option value="Branch 3">Branch 3</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                      <label>Issue Related To</label>
+                      <select name="issue" class="form-control" required>
+                        <option value="" disabled selected>Select Issue</option>
+                        <option value="Member Plan">Member Plan</option>
+                        <option value="Equipments">Equipments</option>
+                        <option value="Gym Environment">Gym Environment</option>
+                        <option value="Lost Items">Lost Items</option>
+                        <option value="Others">Others</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                      <label>Message</label>
+                      <textarea
+                        name="message"
+                        class="form-control"
+                        placeholder="Describe the issue..."
+                        required
+                      ></textarea>
+                    </div>
+
+                    <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                      <input
+                        type="submit"
+                        value="Submit"
+                        class="form-control btn"
+                      />
+                    </div>
+                    <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                      <a href="{% url 'index' %}" class="form-control btn"
+                        >Back to Home</a
+                      >
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
