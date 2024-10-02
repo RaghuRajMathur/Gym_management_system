@@ -1,140 +1,80 @@
 {% include 'admin_nav.html' %}
 {% load static %}
-{% block main %}
-<html lang="en" class="no-focus">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Gravity Health CLub - Admin Dashboard</title>
-    <link rel="stylesheet" id="css-main" href="{% static 'css1/codebase.min.css' %}">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Alkatra:wght@500&family=Cinzel:wght@500&family=Gruppo&family=Poppins:ital,wght@0,300;1,400&family=Roboto+Condensed:ital@1&display=swap');
-        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
-        :root{
-    --background-color:#1f242d;
-    --secondary-bg-color:#323946;
-    --text-color:#fff;
-    --theme-color:turquoise;
-}
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    border: none;
-    outline: none;
-    font-family: 'Poppins',sans-serif;
-    scroll-behavior: smooth;
-    cursor: default;
-}
+       @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
+       @import url('https://fonts.googleapis.com/css2?family=Alkatra&family=Cinzel:wght@400..900&family=Gruppo&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
         body {
-            background-color: #f0f2f5;
-            font-family: 'Arial', sans-serif;
-        }
-        .container1 {
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        h2, h4 {
-            padding: 10px;
-            color: #333;
-        }
-        .block {
-            border-radius: 8px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .block:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        .glow {
-            font-size: 80px;
-            color: #fff;
-            text-align: center;
-            animation: glow 1s ease-in-out infinite alternate;
-        }
-        @keyframes glow {
-            from {
-                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073,
-                0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
-            }
-            to {
-                text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px
-                #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
-            }
-        }
-        .block-content {
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            color: #555;
-        }
-        .block-content .ribbon-box {
-            background-color: #e60073;
-            color: #fff;
-            padding: 5px 10px;
-            font-size: 14px;
-            border-radius: 5px;
-        }
-        .block-content p {
-            margin: 10px 0;
-        }
-        .block-content i {
-            color: #e60073;
-        }
-        .text-center {
-            text-align: center;
-        }
-        .bg-gd-dusk {
-            background-color: #343a40;
-        }
-        .bg-gd-sea {
-            background-color: #17a2b8;
+            background-color: #1f242d;
         }
 
-        .skills{
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  background-color: var(--background-color);
-  flex-direction: column;
-}
-.service-container{
-    display: flex;
-    flex-direction: column;
-}
-.row1,.row2{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  gap: 2.5rem;
-  margin-bottom: 3.5rem;
-}
-.card{
-  display: flex;
-  flex: 1 1 30rem;
-  padding: 1.5rem;
-  border: 0.1rem solid white;
-  /*border: .2rem solid var(--secondary-bg-color);*/
-  background-color: var(--secondary-bg-color);
-  border-radius: 2rem;
-  transition: .5sec ease;
-}
-.heading{
-  font-size: 4.5rem;
-  font-weight: 600;
-  text-align: center;
-  margin-bottom: 4rem;
-  margin-top: 4rem;
-}
-.me{
-  color: var(--theme-color);
-}
-.admin{
-    color: var(--text-color);
-}
-.icon{
+        .roboto-bold {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+        .card {
+            --main-color: gold;
+            --sub-color: #F7EF8A;
+            --bg-color: #323946;
+            --accent-color: #BC8D66;
+            border: 1px solid gold;
+            position: relative;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            width: 270px;
+            padding: 25px;
+            margin-top: 50px;
+            border-radius: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            background-color: var(--bg-color);
+            transition: all 0.2s;
+            cursor: pointer;
+            box-shadow: 0px 0px 5px -1.5px #000;
+        }
+        .card::before {
+            content: '';
+            width: 99%;
+            height: 99%;
+            background: var(--sub-color);
+            position: absolute;
+            z-index: -1;
+            top: 1px;
+            left: 1px;
+            border-radius: 25px;
+            transition: all 0.3s;
+        }
+        .card__wrapper {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+     .card__subtitle, .card__title {
+      font-family: "Roboto", sans-serif;
+            font-weight: inherit; /* Use inherited weight */
+            background-image: linear-gradient(
+                -225deg,
+                #f3a2ba 0%,
+                #ac7ddd 29%,
+                turquoise 67%,
+                rgb(207, 207, 80) 100%
+            );
+            background-size: 200% auto;
+            color: #fff;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textclip 4s linear infinite;
+        }
+        .icon{
   justify-content: center;
   display: flex;
   margin-bottom: 1.5rem ;
@@ -153,165 +93,188 @@
   animation: textclip 4s linear infinite;
   font-size: 7rem;
 }
-.service-text{
+        .card__title {
+            font-weight: 900; /* Match previous weight */
+            font-size: 25px; /* Match previous size */
+        }
+        .card__subtitle {
+            font-weight: 600; /* Match previous weight */
+            font-size: 20px; /* Match previous size */
+        }
+
+        @keyframes textclip {
+            to {
+                background-position: 200% center;
+            }
+        }
+        .card__img a {
+            text-decoration: none; /* Remove the purple bar or underline */
+        }
+        .card__img {
+    width: 100%;
+    text-align: center;
+}
+
+        .card__icon {
+            width: 40px;
+            height: 40px;
+            transform: rotate(-45deg);
+            transition: all 0.3s;
+        }
+        .card__icon svg {
+            width: 100%;
+            height: 100%;
+        }
+        .card__icon g {
+            fill: var(--main-color);
+        }
+        .card__icon circle, polyline, line {
+            stroke: var(--main-color);
+        }
+        .card:hover .card__icon {
+            transform: rotate(0);
+        }
+        .card:hover .card__icon circle, .card:hover .card__icon polyline, .card:hover .card__icon line {
+            stroke: var(--accent-color);
+        }
+        .card:hover .card__icon g {
+            fill: var(--accent-color);
+        }
+        .card:hover {
+            box-shadow: 0px 0px 20px -5px #000;
+        }
+        .card:hover::before {
+            transform: rotate(10deg);
+            box-shadow: 0px 0px 20px -5px #000;
+        }
+        .card-container{
+          gap: 5rem;
+    display: flex;
+    align-items: center;
     justify-content: center;
-  display: flex;
-  margin-bottom: 1.5rem ;
-  background-image: linear-gradient(
-    -225deg,
-    #f3a2ba 0%,
-    #ac7ddd 29%,
-    turquoise 67%,
-    rgb(207, 207, 80) 100%
-  );
-  background-size: 200% auto;
-  color: #fff;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: textclip 4s linear infinite;
-  font-size: 3rem;
+    margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+  .card-container {
+    flex-direction: column;
+    margin-bottom: 5rem;
+  }
 }
-.card-body{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-self: center;
-  color: var(--theme-color);
+
+@media (max-width: 576px) {
+  .card-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
 }
-.card:hover{
-  transform: scale(1.02);
-  border-color: var(--theme-color);
-  cursor: copy;
-}
-@keyframes textclip {
-    to {
-      background-position: 200% center;
-    }
-  } 
+
     </style>
 </head>
 <body>
-    <!-- Page Content -->
-     <!--
-    <div class="content">
-        <div class="row gutters-tiny invisible" data-toggle="appear">
-           
-            <div class="col-6 col-md-3 col-xl-4">
-                <a class="block text-center" href="{% url 'viewEnquiry' %}">
-                    <div class="block-content ribbon ribbon-bookmark ribbon-crystal ribbon-left bg-gd-dusk">
-                        <div class="ribbon-box">{{en}}</div>
-                        <p class="mt-5">
-                            <i class="fas fa-book-reader fa-3x"></i>
-                        </p>
-                        <p class="font-w600">Total Enquiry</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-6 col-md-3 col-xl-4">
-                <a class="block text-center" href="{% url 'viewPlan' %}">
-                    <div class="block-content ribbon ribbon-bookmark ribbon-crystal ribbon-left bg-gd-dusk">
-                        <div class="ribbon-box">{{p}}</div>
-                        <p class="mt-5">
-                            <i class="fas fa-book fa-3x"></i>
-                        </p>
-                        <p class="font-w600">Total Plan</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-6 col-md-3 col-xl-4">
-                <a class="block text-center" href="{% url 'viewEquipment' %}">
-                    <div class="block-content ribbon ribbon-bookmark ribbon-crystal ribbon-left bg-gd-sea">
-                        <div class="ribbon-box">{{eq}}</div>
-                        <p class="mt-5">
-                            <i class="fas fa-edit fa-3x"></i>
-                        </p>
-                        <p class="font-w600">Total Equipment</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-6 col-md-3 col-xl-4">
-                <a class="block text-center" href="{% url 'viewMember' %}">
-                    <div class="block-content ribbon ribbon-bookmark ribbon-crystal ribbon-left bg-gd-sea">
-                        <div class="ribbon-box">{{m}}</div>
-                        <p class="mt-5">
-                            <i class="fas fa-folder-open fa-3x"></i>
-                        </p>
-                        <p class="font-w600">Total Member</p>
-                    </div>
-                </a>
-            </div>
+      <h1 class="heading"><span class="admin">Admin  Services</span></h1>
+<div class="card-container">
+<div class="card">
+    <!-- Updated Image Section -->
+   <div class="card__img">
+    <a href="{% url 'viewEnquiry' %}">
+      <i class="fa-solid fa-book-open-reader icon"></i>
+    </a>
+</div>
+    <div class="card__subtitle">Gym Sync</div>
+    <div class="card__wrapper">
+        <div class="card__title">ENQUIRIES</div>
+        <a href="{% url 'viewEnquiry' %}">
+        <div class="card__icon">
+            <svg color="rgb(224, 223, 220)" style="user-select: none; width: 100%; height: 100%; display: inline-block; fill: rgb(224, 223, 220); flex-shrink: 0; cursor: auto;" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                <g color="rgb(224, 223, 220)">
+                    <circle opacity="0.2" r="96" cy="128" cx="128"></circle>
+                    <circle stroke-width="16" stroke-miterlimit="10" stroke="rgb(224, 223, 220)" fill="none" r="96" cy="128" cx="128"></circle>
+                    <polyline stroke-width="16" stroke-linejoin="round" stroke-linecap="round" stroke="rgb(224, 223, 220)" fill="none" points="134.1 161.9 168 128 134.1 94.1"></polyline>
+                    <line stroke-width="16" stroke-linejoin="round" stroke-linecap="round" stroke="rgb(224, 223, 220)" fill="none" y2="128" x2="168" y1="128" x1="88"></line>
+                </g>
+            </svg>
         </div>
+      </a>
     </div>
-    <br><br><br>
-    </div>
--->
-    <section class="skills" id="skills">
-        <h1 class="heading"><span class="admin">Admin </span><span class="me">Services</span></h1>
-        <div class="service-container">
-            <div class="row1">
-                <div class="col-sm-5">
-                    <div class="card">
-                        <div class="card-body">
-                            <a href="{% url 'viewEnquiry' %}">
-                            <i class="fa-solid fa-book-open-reader icon"></i>
-                            <h4 class="service-text">Enquiries</h4>
-                        </a>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-sm-5">
-                    <div class="card">
-                        <div class="card-body">
-                            <a href="{% url 'viewPlan' %}">
-                            <i class="fa-solid fa-book icon"></i>
-                            <h4 class="service-text">Plans</h4>
-                            </a>
-                        </div>
-                      </div>
-                </div>
-            </div>
-            <div class="row2">
-                <div class="col-sm-5">
-                    <div class="card">
-                        <div class="card-body">
-                            <a href="{% url 'viewEquipment' %}">
-                            <i class="fa-solid fa-dumbbell icon"></i>
-                            <h4 class="service-text">Equipments</h4>
-                        </a>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-sm-5">
-                    <div class="card">
-                        <div class="card-body">
-                            <a href="{% url 'viewMember' %}">
-                            <i class="fa-solid fa-people-group icon"></i>
-                            <h4 class="service-text">Members</h4>
-                        </a>
-                        </div>
-                      </div>
-                </div>
-            </div>
+</div>
+<div class="card">
+  <!-- Updated Image Section -->
+ <div class="card__img">
+  <a href="{% url 'viewPlan' %}">
+      
+    <i class="fa-solid fa-book icon"></i>
+  </a>
+</div>
+  <div class="card__subtitle">Gym Sync</div>
+  <div class="card__wrapper">
+      <div class="card__title">PLANS</div>
+      <a href="{% url 'viewPlan' %}">
+      <div class="card__icon">
+          <svg color="rgb(224, 223, 220)" style="user-select: none; width: 100%; height: 100%; display: inline-block; fill: rgb(224, 223, 220); flex-shrink: 0; cursor: auto;" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+              <g color="rgb(224, 223, 220)">
+                  <circle opacity="0.2" r="96" cy="128" cx="128"></circle>
+                  <circle stroke-width="16" stroke-miterlimit="10" stroke="rgb(224, 223, 220)" fill="none" r="96" cy="128" cx="128"></circle>
+                  <polyline stroke-width="16" stroke-linejoin="round" stroke-linecap="round" stroke="rgb(224, 223, 220)" fill="none" points="134.1 161.9 168 128 134.1 94.1"></polyline>
+                  <line stroke-width="16" stroke-linejoin="round" stroke-linecap="round" stroke="rgb(224, 223, 220)" fill="none" y2="128" x2="168" y1="128" x1="88"></line>
+              </g>
+          </svg>
+      </div>
+    </a>
+  </div>
+</div>
+</div>
+<div class="card-container">
+  <div class="card">
+      <!-- Updated Image Section -->
+     <div class="card__img">
+      <a href="{% url 'viewEquipment' %}">
+        <i class="fa-solid fa-dumbbell icon"></i>
+      </a>
+  </div>
+      <div class="card__subtitle">Gym Sync</div>
+      <div class="card__wrapper">
+          <div class="card__title">EQUIPMENTS</div>
+          <a href="{% url 'viewEquipment' %}">
+          <div class="card__icon">
+              <svg color="rgb(224, 223, 220)" style="user-select: none; width: 100%; height: 100%; display: inline-block; fill: rgb(224, 223, 220); flex-shrink: 0; cursor: auto;" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                  <g color="rgb(224, 223, 220)">
+                      <circle opacity="0.2" r="96" cy="128" cx="128"></circle>
+                      <circle stroke-width="16" stroke-miterlimit="10" stroke="rgb(224, 223, 220)" fill="none" r="96" cy="128" cx="128"></circle>
+                      <polyline stroke-width="16" stroke-linejoin="round" stroke-linecap="round" stroke="rgb(224, 223, 220)" fill="none" points="134.1 161.9 168 128 134.1 94.1"></polyline>
+                      <line stroke-width="16" stroke-linejoin="round" stroke-linecap="round" stroke="rgb(224, 223, 220)" fill="none" y2="128" x2="168" y1="128" x1="88"></line>
+                  </g>
+              </svg>
+          </div>
+        </a>
+      </div>
+  </div>
+  <div class="card">
+    <!-- Updated Image Section -->
+   <div class="card__img">
+    <a href="{% url 'viewMember' %}">
+      <i class="fa-solid fa-people-group icon"></i>
+    </a>
+  </div>
+    <div class="card__subtitle">Gym Sync</div>
+    <div class="card__wrapper">
+        <div class="card__title">MEMBERS</div>
+        <a href="{% url 'viewMember' %}">
+        <div class="card__icon">
+            <svg color="rgb(224, 223, 220)" style="user-select: none; width: 100%; height: 100%; display: inline-block; fill: rgb(224, 223, 220); flex-shrink: 0; cursor: auto;" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                <g color="rgb(224, 223, 220)">
+                    <circle opacity="0.2" r="96" cy="128" cx="128"></circle>
+                    <circle stroke-width="16" stroke-miterlimit="10" stroke="rgb(224, 223, 220)" fill="none" r="96" cy="128" cx="128"></circle>
+                    <polyline stroke-width="16" stroke-linejoin="round" stroke-linecap="round" stroke="rgb(224, 223, 220)" fill="none" points="134.1 161.9 168 128 134.1 94.1"></polyline>
+                    <line stroke-width="16" stroke-linejoin="round" stroke-linecap="round" stroke="rgb(224, 223, 220)" fill="none" y2="128" x2="168" y1="128" x1="88"></line>
+                </g>
+            </svg>
         </div>
-    </section>
-    <!-- END Page Container -->
-
-    <!-- Codebase Core JS -->
-    <script src="{% static 'js1/core/jquery.min.js' %}"></script>
-    <script src="{% static 'js1/core/popper.min.js' %}"></script>
-    <script src="{% static 'js1/core/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js1/core/jquery.slimscroll.min.js' %}"></script>
-    <script src="{% static 'js1/core/jquery.scrollLock.min.js' %}"></script>
-    <script src="{% static 'js1/core/jquery.appear.min.js' %}"></script>
-    <script src="{% static 'js1/core/jquery.countTo.min.js' %}"></script>
-    <script src="{% static 'js1/core/js.cookie.min.js' %}"></script>
-    <script src="{% static 'js1/codebase.js' %}"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <!-- Page JS Plugins -->
-    <script src="{% static 'js1/plugins/chartjs/Chart.bundle.min.js' %}"></script>
-    <!-- Page JS Code -->
-    <script src="{% static 'js1/pages/be_pages_dashboard.js' %}"></script>
+      </a>
+    </div>
+  </div>
+  </div>
+  <div style="margin-top: 90px;"></div>
 </body>
 </html>
-{% endblock %}

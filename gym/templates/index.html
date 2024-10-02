@@ -1,27 +1,37 @@
 {% include 'navbar.html' %} {% load static %} {% block main %}
 
 <html lang="en">
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0"
+  />
+  <script src="{% static 'script/ourclasses_script.js' %}" defer></script>
+  <script src="{% static 'script/VueScripts.js' %}" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gravity Health Club</title>
+    <title>Gym Sync</title>
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
     <link rel="stylesheet" href="{% static 'css/index_style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/featurestyle.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/class_style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/testimonial_style.css' %}" />
   </head>
   <body>
       <!----Hero Image-->
-      <div class="main-title" id="home">
-        <div class="main-text">
-          <h1>Welcome To Gravity health Club</h1>
-          <p>
-            Welcome to Gravity Health Club, where fitness meets innovation. Our
-            cutting-edge facility in North Delhi offers personalized training,
-            state-of-the-art equipment, and a supportive community to help you
-            reach your goals. Join us and defy gravity on your journey to a
-            healthier, happier you.
-          </p>
-          <a href="{% url 'admin_login' %}" class="main-btn">Login</a>
+
+      <div id="app">
+        <div class="main-title" id="home">
+          <img :src="gymLogoUrl" alt="Gym logo" class="hero-img" :class="{'visible': isHeroImgVisible}">
+          <div class="main-text">
+            <h1><i>[[ title ]]</i></h1>
+            <p>[[ description ]]</p>
+            <a href="{% url 'admin_login' %}" class="main-btn" :class="{'visible': isMainBtnVisible}">Login</a>
+          </div>
         </div>
       </div>
+      
     <!--=============End of Header=============-->
 
     <!---About Section-----------=============-->
@@ -59,22 +69,22 @@
     <!--End of About Section====================-->
 
     <!--==============Work out section=====================-->
-    <section id="workout">
+    <!-- <section id="workout">
       <div class="section-center">
-        <!--title-============-->
+        
         <div class="work-title">
           <h3 class="title">Why Work Out here</h3>
         </div>
-        <!--End of title===================-->
+        
         <div class="work-center">
-          <!--workout detail-->
+          
           <article class="service">
             <i class="fas fa-bolt"></i>
             <h3>All Trainer Good</h3>
             <p>“All Trainer and good behaviour wise helping all Time.”</p>
           </article>
-          <!--End of workout===========-->
-          <!--workout detail-->
+         
+          
           <article class="service">
             <i class="fas fa-leaf"></i>
             <h3>Good training</h3>
@@ -83,8 +93,8 @@
               trainer.”
             </p>
           </article>
-          <!--End of workout===========-->
-          <!--workout detail-->
+         
+          
           <article class="service">
             <i class="fas fa-battery-three-quarters"></i>
             <h3>Core Strength</h3>
@@ -93,8 +103,8 @@
               indomitable will.”
             </p>
           </article>
-          <!--End of workout===========-->
-          <!--workout detail-->
+         
+          
           <article class="service">
             <i class="fas fa-smile-beam"></i>
             <h3>Positivity</h3>
@@ -103,22 +113,174 @@
               feel…”
             </p>
           </article>
-          <!--End of workout===========-->
+         
         </div>
       </div>
-    </section>
+    </section> -->
+
+    <div id="featureapp">
+      <div class="our-features">
+        <p class="feature-title" ref="featureTitle">WHY CHOOSE US?</p>
+      <div class="container-wrapper">
+          <!-- First Card -->
+          <div class="feature-container noselect">
+              <div class="canvas">
+                  <div class="tracker tr-1"></div>
+                  <div class="tracker tr-2"></div>
+                  <div class="tracker tr-3"></div>
+                  <div class="tracker tr-4"></div>
+                  <div class="tracker tr-5"></div>
+                  <div class="tracker tr-6"></div>
+                  <div class="tracker tr-7"></div>
+                  <div class="tracker tr-8"></div>
+                  <div class="tracker tr-9"></div>
+                  <div class="tracker tr-10"></div>
+                  <div class="tracker tr-11"></div>
+                  <div class="tracker tr-12"></div>
+                  <div class="tracker tr-13"></div>
+                  <div class="tracker tr-14"></div>
+                  <div class="tracker tr-15"></div>
+                  <div class="tracker tr-16"></div>
+                  <div class="tracker tr-17"></div>
+                  <div class="tracker tr-18"></div>
+                  <div class="tracker tr-19"></div>
+                  <div class="tracker tr-20"></div>
+                  <div class="tracker tr-21"></div>
+                  <div class="tracker tr-22"></div>
+                  <div class="tracker tr-23"></div>
+                  <div class="tracker tr-24"></div>
+                  <div id="card">
+                      <img src="{% static 'gymgifs/personal-trainer.gif' %}" id="icon1" alt="Computer man">
+                      <p id="prompt">GOOD TRAINERS</p>
+                      <div class="title">All Trainer and good behaviour wise helping all Time.</div>
+                  </div>
+              </div>
+          </div>
+  
+          <!-- Second Card -->
+          <div class="feature-container noselect">
+              <div class="canvas">
+                  <!-- Same tracker and card structure -->
+                  <div class="tracker tr-1"></div>
+                  <div class="tracker tr-2"></div>
+                  <div class="tracker tr-3"></div>
+                  <div class="tracker tr-4"></div>
+                  <div class="tracker tr-5"></div>
+                  <div class="tracker tr-6"></div>
+                  <div class="tracker tr-7"></div>
+                  <div class="tracker tr-8"></div>
+                  <div class="tracker tr-9"></div>
+                  <div class="tracker tr-10"></div>
+                  <div class="tracker tr-11"></div>
+                  <div class="tracker tr-12"></div>
+                  <div class="tracker tr-13"></div>
+                  <div class="tracker tr-14"></div>
+                  <div class="tracker tr-15"></div>
+                  <div class="tracker tr-16"></div>
+                  <div class="tracker tr-17"></div>
+                  <div class="tracker tr-18"></div>
+                  <div class="tracker tr-19"></div>
+                  <div class="tracker tr-20"></div>
+                  <div class="tracker tr-21"></div>
+                  <div class="tracker tr-22"></div>
+                  <div class="tracker tr-23"></div>
+                  <div class="tracker tr-24"></div>
+                  <div id="card">
+                      <img src="{% static 'gymgifs/dumbbell.gif' %}" id="icon1" alt="Computer man">
+                      <p id="prompt">CORE STRENGTH</p>
+                      <div class="title">Strength does not come from physical capacity. It comes from an indomitable will.</div>
+                  </div>
+              </div>
+          </div>
+  
+          <!-- Third Card -->
+          <div class="feature-container noselect">
+              <div class="canvas">
+                  <!-- Same tracker and card structure -->
+                  <div class="tracker tr-1"></div>
+                  <div class="tracker tr-2"></div>
+                  <div class="tracker tr-3"></div>
+                  <div class="tracker tr-4"></div>
+                  <div class="tracker tr-5"></div>
+                  <div class="tracker tr-6"></div>
+                  <div class="tracker tr-7"></div>
+                  <div class="tracker tr-8"></div>
+                  <div class="tracker tr-9"></div>
+                  <div class="tracker tr-10"></div>
+                  <div class="tracker tr-11"></div>
+                  <div class="tracker tr-12"></div>
+                  <div class="tracker tr-13"></div>
+                  <div class="tracker tr-14"></div>
+                  <div class="tracker tr-15"></div>
+                  <div class="tracker tr-16"></div>
+                  <div class="tracker tr-17"></div>
+                  <div class="tracker tr-18"></div>
+                  <div class="tracker tr-19"></div>
+                  <div class="tracker tr-20"></div>
+                  <div class="tracker tr-21"></div>
+                  <div class="tracker tr-22"></div>
+                  <div class="tracker tr-23"></div>
+                  <div class="tracker tr-24"></div>
+                  <div id="card">
+                      
+                      <img src="{% static 'gymgifs/weight-lifting.gif' %}" id="icon1" alt="Computer man">
+                      <p id="prompt">GREAT TRAINING</p>
+                      <div class="title">Here all Equipment are good. Gym owner are also good person, good trainer</div>
+                  </div>
+              </div>
+          </div>
+  
+          <!-- Fourth Card -->
+          <div class="feature-container noselect">
+              <div class="canvas">
+                  <!-- Same tracker and card structure -->
+                  <div class="tracker tr-1"></div>
+                  <div class="tracker tr-2"></div>
+                  <div class="tracker tr-3"></div>
+                  <div class="tracker tr-4"></div>
+                  <div class="tracker tr-5"></div>
+                  <div class="tracker tr-6"></div>
+                  <div class="tracker tr-7"></div>
+                  <div class="tracker tr-8"></div>
+                  <div class="tracker tr-9"></div>
+                  <div class="tracker tr-10"></div>
+                  <div class="tracker tr-11"></div>
+                  <div class="tracker tr-12"></div>
+                  <div class="tracker tr-13"></div>
+                  <div class="tracker tr-14"></div>
+                  <div class="tracker tr-15"></div>
+                  <div class="tracker tr-16"></div>
+                  <div class="tracker tr-17"></div>
+                  <div class="tracker tr-18"></div>
+                  <div class="tracker tr-19"></div>
+                  <div class="tracker tr-20"></div>
+                  <div class="tracker tr-21"></div>
+                  <div class="tracker tr-22"></div>
+                  <div class="tracker tr-23"></div>
+                  <div class="tracker tr-24"></div>
+                  <div id="card">
+                    
+                      <img src="{% static 'gymgifs/training (1).gif' %}" id="icon1" alt="Computer man">
+                      <p id="prompt">POSITIVITY</p>
+                      <div class="title">Actually, I just woke up one day and decided I didn’t want to feel…</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  </div>
 
     <!--=========End of Work out Section===============-->
     <!--=========Testimonial  Section===============-->
-    <section id="testimonial">
+    <!-- <section id="testimonial">
       <div class="section-center">
-        <!--title-============-->
+        
         <div>
           <h3 class="title">Happy Clients</h3>
         </div>
-        <!--End of title===================-->
+        
         <div class="client-center">
-          <!--Testimonial Start-->
+          
           <article class="testimonial">
             <h3>Shivam Sharma</h3>
             <p>
@@ -127,8 +289,8 @@
               to my friends and family...”
             </p>
           </article>
-          <!--end of Testimonial-->
-          <!--Testimonial Start-->
+         
+          
           <article class="testimonial">
             <h3>Raghuraj Mathur</h3>
             <p>
@@ -136,8 +298,8 @@
               recommend!..”
             </p>
           </article>
-          <!--end of Testimonial-->
-          <!--Testimonial Start-->
+         
+          
           <article class="testimonial">
             <h3>Kartik Tanwar</h3>
             <p>
@@ -146,64 +308,200 @@
               personal...”
             </p>
           </article>
-          <!--end of Testimonial-->
+         
         </div>
       </div>
-    </section>
+    </section> -->
+
+    <div id="testimonialApp">
+      <section class="testimonial">
+        <div class="container">
+          <div class="row">
+            <!-- Tabs for Carousel Navigation -->
+            <div class="col-lg-6 d-none d-lg-block">
+              <ol class="carousel-indicators tabs">
+                <li v-for="(tab, index) in tabs" :key="index" :class="{ active: activeIndex === index }" @click="setActive(index)">
+                  <figure>
+                    <img :src="tab.img" class="img-fluid" alt="">
+                  </figure>
+                </li>
+              </ol>
+            </div>
+  
+            <!-- Carousel Content -->
+            <div class="col-lg-6 d-flex justify-content-center align-items-center">
+              <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
+                <h3>WHAT OUR CLIENTS SAY</h3>
+                <h1 ref="testimonialTitle">TESTIMONIALS</h1>
+                <div class="carousel-inner">
+                  <div v-for="(testimonial, index) in testimonials" :key="index" :class="{ 'carousel-item': true, active: activeIndex === index }">
+                    <div class="quote-wrapper">
+                      <p>[[ testimonial.quote ]]</p>
+                      <h3>[[ testimonial.name ]]</h3>
+                    </div>
+                  </div>
+                </div>
+                <!-- Carousel Indicators -->
+                <ol class="carousel-indicators indicators">
+                  <li v-for="(testimonial, index) in testimonials" :key="index" :class="{ active: activeIndex === index }" @click="setActive(index)"></li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  
+
     <!--==============End of Testimonial Section===========-->
     <!--==============Classes Section===========-->
-    <section id="classes">
+
+    <div class="slider-cont">
+      <h2 class="our-classes">Our Classes</h2>
+    <div class="class-container">
+      <div class="slider-wrapper">
+        <ul class="image-list">
+          <li class="image-item">
+            <img src="{% static 'images/gymclass5.jpg' %}" alt="Product One" />
+            <div class="description">WEIGHTS</div>
+          </li>
+          <li class="image-item">
+            <img src="{% static 'images/ropes.jpg' %}" alt="Product Two" />
+            <div class="description">ROPES</div>
+          </li>
+          <li class="image-item">
+            <img src="{% static 'images/gymclass2.jpg' %}" alt="Product Three" />
+            <div class="description">TRAINED RUNNING</div>
+          </li>
+          <li class="image-item">
+            <img src="{% static 'images/gymclass3.jpg' %}" alt="Product Four" />
+            <div class="description">STRETCHING</div>
+          </li>
+          <li class="image-item">
+            <img src="{% static 'images/Crossfit.jpg' %}" alt="Product Four" />
+            <div class="description">CROSSFIT</div>
+          </li>
+          <li class="image-item">
+            <img src="{% static 'images/Pilates.jpg' %}" alt="Product Four" />
+            <div class="description">PILATES</div>
+          </li>
+          <li class="image-item">
+            <img src="{% static 'images/gymclass4.jpg' %}" alt="Product Four" />
+            <div class="description">COMBAT</div>
+          </li>
+          <li class="image-item">
+            <img src="{% static 'images/yoga.jpg' %}" alt="Product Four" />
+            <div class="description">YOGA</div>
+          </li>
+          <!-- Add more products as necessary -->
+        </ul>
+      </div>
+      <div class="slider-scrollbar">
+        <div class="scrollbar-track">
+          <div class="scrollbar-thumb"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- <section id="classes">
       <div class="section-center">
-        <!--title-============-->
+        
         <div>
           <h3 class="title">Our Classes</h3>
         </div>
-        <!--End of title===================-->
+        
         <div class="classes-container">
-          <!--Classes-->
+          
           <article class="class-item">
-            <!--Card-->
+            
             <div class="img-container">
               <img src="{% static 'images/gym5.jpg' %}" alt="class1" />
             </div>
             <div class="text-container">
               <h4>Weights</h4>
             </div>
-            <!--end of card-->
+           
           </article>
-          <!--End of classes-->
-          <!--Classes-->
+          
+          
           <article class="class-item">
-            <!--Card-->
+           
             <div class="img-container">
               <img src="{% static 'images/Crossfit.jpg' %}" alt="class1" />
             </div>
             <div class="text-container">
               <h4>Crossfit</h4>
             </div>
-            <!--end of card-->
+           
           </article>
-          <!--End of classes-->
-          <!--Classes-->
+          
+          
           <article class="class-item">
-            <!--Card-->
+           
             <div class="img-container">
               <img src="{% static 'images/Pilates.jpg' %}" alt="class1" />
             </div>
             <div class="text-container">
               <h4>Pilates</h4>
             </div>
-            <!--end of card-->
+           
           </article>
-          <!--End of classes-->
+          
         </div>
       </div>
-    </section>
+    </section> -->
     <!--==============End of Classes Section===========-->
 
     <!---Footer===========-->
     <footer></footer>
     <!--=============End of Footer===========-->
+
+
+    <!--======== Vue.js Scripts =============-->
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js'></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
+<script>
+   var featureapp = new Vue({
+            el: '#featureapp',
+            data: {
+                isFeatureTitleVisible: false
+            },
+            mounted() {
+                this.observeElements();  // Call the observer when the Vue instance is mounted
+            },
+            methods: {
+                observeElements() {
+                    const featureTitle = this.$refs.featureTitle;  // Reference to the feature-title element
+
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                this.isFeatureTitleVisible = true;  // Set visibility to true when title enters the viewport
+                            } else {
+                                this.isFeatureTitleVisible = false;  // Set visibility to false when title leaves the viewport
+                            }
+                        });
+                    }, {
+                        threshold: 0.1  // Trigger when 10% of the feature-title is visible
+                    });
+
+                    observer.observe(featureTitle);  // Observe the feature-title element
+                }
+            },
+            watch: {
+                isFeatureTitleVisible(newVal) {
+                    const featureTitle = this.$refs.featureTitle;
+                    if (newVal) {
+                        featureTitle.classList.add('visible');  // Add 'visible' class when title enters the viewport
+                    } else {
+                        featureTitle.classList.remove('visible');  // Remove 'visible' class when title leaves the viewport
+                    }
+                }
+            }
+        });
+</script>
   </body>
 </html>
 {% endblock %}
