@@ -1,0 +1,68 @@
+{% include 'admin_nav.html' %}
+{% load static %}
+{% block main %}
+
+{% if error == "no" %}
+    <script>
+        alert('Your Enquiry has been sent successfully.');
+        window.location.href = "{% url 'viewEnquiry' %}";
+    </script>
+{% elif error == "yes" %}
+    <script>
+        alert('Something went wrong, please try again.');
+    </script>
+{% endif %}
+
+<!DOCTYPE html>
+<html lang="en" class="no-focus">
+<head>
+    <meta charset="UTF-8">
+    <title>Gym Management System - Add Enquiry</title>
+    <link rel="stylesheet" href="{% static 'css/addEnquiry.css' %}">
+</head>
+<body>
+
+    <div class="container card shadow">
+        <div class="card-body">
+            <h5>Add Enquiry</h5>
+            <form method="post" novalidate>
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" class="form-control" placeholder="Enter Name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="mobile">Contact Number</label>
+                    <input type="text" id="mobile" name="mobile" class="form-control" placeholder="Enter Mobile Number" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email ID</label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email ID" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="age">Enter Age</label>
+                    <input type="number" id="age" name="age" class="form-control" placeholder="Enter Age (In Years)" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Gender</label><br>
+                    <input type="radio" id="male" name="gender" value="Male" required>
+                    <label for="male">Male</label>
+                    
+                    <input type="radio" id="female" name="gender" value="Female" required>
+                    <label for="female">Female</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
+
+{% endblock %}
