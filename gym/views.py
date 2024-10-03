@@ -313,6 +313,10 @@ def delete_contact(request,pid):
     contact.delete()
     return redirect('read_queries')
 
+def member_plans(request):
+    return render(request, 'member_plan.html')
+
+
 def changePassword(request):
     if not request.user.is_authenticated:
         return redirect('index')

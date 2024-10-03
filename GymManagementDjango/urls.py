@@ -30,6 +30,7 @@ urlpatterns = [
     path('admin_home', admin_home, name='admin_home'),
     path('addEnquiry', addEnquiry, name='addEnquiry'),
     path('viewEnquiry', viewEnquiry, name='viewEnquiry'),
+    path('member_plan/', views.member_plans, name='member_plan'),
     path('edit_Enquiry/<int:pid>', edit_Enquiry, name='edit_Enquiry'),
     path('delete_Enquiry/<int:pid>', delete_Enquiry, name='delete_Enquiry'),
     path('addPlan', addPlan, name='addPlan'),
