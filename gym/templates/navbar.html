@@ -4,8 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fitness</title>
-    <link rel="stylesheet" href="{% static 'css/navstyle.css' %}" />
-    <script src="{ % static 'js/script.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/navstyle1.css' %}" />
     <script
       src="https://kit.fontawesome.com/332a215f17.js"
       crossorigin="anonymous"
@@ -69,14 +68,15 @@
 
     <script>
       function showSidebar() {
-        const sidebar = document.querySelector(".sidebar");
-        sidebar.style.right = "0"; // Slide in from the right
-      }
+    const sidebar = document.querySelector(".sidebar");
+    sidebar.classList.add("active");
+}
 
-      function hideSidebar() {
-        const sidebar = document.querySelector(".sidebar");
-        sidebar.style.right = "-250px"; // Slide out to the right
-      }
+function hideSidebar() {
+    const sidebar = document.querySelector(".sidebar");
+    sidebar.classList.remove("active");
+}
+
     </script>
   </body>
 </html>
