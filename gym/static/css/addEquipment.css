@@ -1,0 +1,81 @@
+/* Styling for the card container */
+.card {
+    margin-top: 50px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+/* Center the form elements */
+.container-fluid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Title Styling */
+h5 {
+    font-size: 24px;
+    color: #000000;
+    border-bottom: 2px solid #ff6600;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Form Styling */
+.form-group {
+    width: 100%;
+    max-width: 600px; /* Limit the width of the form fields */
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-control {
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box; /* Ensures padding doesn't increase the width */
+    font-size: 16px;
+}
+
+textarea.form-control {
+    height: 100px; /* Increased height for the description */
+    resize: vertical; /* Allow resizing only vertically */
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: #ff6600;
+    border-color: #ff6600;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #ff4500;
+    border-color: #ff4500;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .card {
+        padding: 20px;
+    }
+
+    .form-group {
+        max-width: 100%; /* Allow form to take full width on smaller screens */
+    }
+}

@@ -1,0 +1,58 @@
+/* addPlan.css */
+
+/* General styles */
+body {
+    background-color: #f8f9fa; /* Light background color */
+}
+
+.container {
+    margin-top: 50px; /* Space from the top */
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff; /* White background for the card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+/* Card Header */
+.card-body h5 {
+    font-size: 1.5rem;
+    color: #333; /* Darker text for the header */
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 20px; /* Space between form groups */
+}
+
+.form-control {
+    border-radius: 5px; /* Rounded corners for input fields */
+    border: 1px solid #ced4da; /* Default border color */
+    padding: 10px; /* Padding inside input fields */
+    transition: border-color 0.3s; /* Transition effect for focus */
+}
+
+.form-control:focus {
+    border-color: #007bff; /* Change border color on focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Light blue shadow on focus */
+}
+
+/* Button Styles */
+.btn {
+    background-color: #007bff; /* Blue background */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Padding for button */
+    color: #fff; /* White text */
+    transition: background-color 0.3s; /* Transition effect for hover */
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .col-sm-9 {
+        width: 100%; /* Full width on small screens */
+    }
+}

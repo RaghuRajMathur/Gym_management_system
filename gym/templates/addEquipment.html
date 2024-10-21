@@ -15,77 +15,120 @@
      </script>
 {% endif %}
 
- <html lang="en" class="no-focus">
+<html lang="en" class="no-focus">
 
- <title>Gym Management System - Add Equipment</title>
- <link rel="stylesheet" id="css-main" href="{% static 'css1/codebase.min.css' %}">
- <br><br><br><br>
-	<div class="container card shadow mt-5">
-		<div class="card-body">
-			<h5 class="p-2" style="border-bottom: 2px solid orange">Add Equipment</h5>
-             <br>
-			<div class="container-fluid">
-					<form method="post">
-                     {% csrf_token %}
+<head>
+    <title>Gym Management System - Add Equipment</title>
+    <link rel="stylesheet" href="{% static 'css/addEquipment.css' %}">
+    <script>
+        function validateForm() {
+            // Validate Equipment Name (only letters and spaces)
+            let name = document.forms["addEquipmentForm"]["name"].value;
+            let nameRegex = /^[a-zA-Z\s]+$/;
+            if (!nameRegex.test(name)) {
+                alert("Equipment Name must contain only alphabetic characters and spaces.");
+                return false;
+            }
 
-                        <div class="col-sm-9">
-							<div class="form-group">
-								<label>Equipment Name</label>
-                                <input type="text" name="name" class="form-control" placeholder="Enter Equipment Name" required>
-							</div>
-						</div>
+            // Validate Price (numeric and greater than zero)
+            let price = document.forms["addEquipmentForm"]["price"].value;
+            if (isNaN(price) || price <= 0) {
+                alert("Price must be a positive number.");
+                return false;
+            }
 
-                        <div class="col-sm-9">
-							<div class="form-group">
-								<label>Price</label>
-                                <input type="text" name="price" class="form-control" placeholder="Enter Price(In RS.)" required>
-							</div>
-						</div>
+            // Validate Unit (only letters and spaces)
+            let unit = document.forms["addEquipmentForm"]["unit"].value;
+        let unitRegex = /^[a-zA-Z0-9\s]+$/; // Alphanumeric and spaces allowed
+        if (unit === "" || !unitRegex.test(unit)) {
+            alert("Unit must contain only letters, numbers, and spaces.");
+            return false;
+        }
 
-                        <div class="col-sm-9">
-							<div class="form-group">
-								<label>Unit</label>
-                                <input type="text" name="unit" class="form-control" placeholder="Enter Unit" required>
-							</div>
-						</div>
+            // Validate Purchase Date (required, date should not be in the future)
+            let purchaseDate = document.forms["addEquipmentForm"]["purchasedate"].value;
+            let currentDate = new Date().toISOString().split('T')[0];
+            if (purchaseDate > currentDate) {
+                alert("Purchase Date cannot be in the future.");
+                return false;
+            }
 
-						<div class="col-sm-9">
-							<div class="form-group">
-								<label>Purchase Date</label>
-                                <input type="date" name="purchasedate" class="form-control" required>
-							</div>
-						</div>
+            // Validate Description (optional, max length 255 characters)
+            let description = document.forms["addEquipmentForm"]["description"].value;
+            if (description.length > 255) {
+                alert("Description cannot exceed 255 characters.");
+                return false;
+            }
 
-						<div class="col-sm-9">
-							<div class="form-group">
-								<label>Description</label>
-								<textarea name="description" class="form-control" placeholder="Describe about Equipment"></textarea>
-							</div>
-						</div>
-						<hr>
-						<input type="submit" value="Submit" class="btn btn-primary">
-					</form>
-				</div>
-			</div>
-		</div>
+            return true;
+        }
+    </script>
+</head>
 
- <!-- Codebase Core JS -->
-        <script src="{% static 'js1/core/jquery.min.js' %}"></script>
-        <script src="{% static 'js1/core/popper.min.js' %}"></script>
-        <script src="{% static 'js1/core/bootstrap.min.js' %}"></script>
-        <script src="{% static 'js1/core/jquery.slimscroll.min.js' %}"></script>
-        <script src="{% static 'js1/core/jquery.scrollLock.min.js' %}"></script>
-        <script src="{% static 'js1/core/jquery.appear.min.js' %}"></script>
-        <script src="{% static 'js1/core/jquery.countTo.min.js' %}"></script>
-        <script src="{% static 'js1/core/js.cookie.min.js' %}"></script>
-        <script src="{% static 'js1/codebase.js' %}"></script>
+<body>
+    <br><br><br><br>
+    <div class="container card shadow mt-5">
+        <div class="card-body">
+            <h5 class="p-2" style="border-bottom: 2px solid orange">Add Equipment</h5>
+            <br>
+            <div class="container-fluid">
+                <form name="addEquipmentForm" method="post" onsubmit="return validateForm()">
+                    {% csrf_token %}
 
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-        <!-- Page JS Plugins -->
-        <script src="{% static 'js1/plugins/chartjs/Chart.bundle.min.js' %}"></script>
+                    <div class="col-sm-9">
+                        <div class="form-group">
+                            <label>Equipment Name</label>
+                            <input type="text" name="name" class="form-control" placeholder="Enter Equipment Name" required>
+                        </div>
+                    </div>
 
-        <!-- Page JS Code -->
-        <script src="{% static 'js1/pages/be_pages_dashboard.js' %}"></script>
+                    <div class="col-sm-9">
+                        <div class="form-group">
+                            <label>Price</label>
+                            <input type="text" name="price" class="form-control" placeholder="Enter Price (In Rs.)" required>
+                        </div>
+                    </div>
 
- </html>
+                    <div class="col-sm-9">
+                        <div class="form-group">
+                            <label>Unit</label>
+                            <input type="text" name="unit" class="form-control" placeholder="Enter Unit" required>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-9">
+                        <div class="form-group">
+                            <label>Purchase Date</label>
+                            <input type="date" name="purchasedate" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-9">
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea name="description" class="form-control" placeholder="Describe about Equipment"></textarea>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <input type="submit" value="Submit" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+    </div><!-- JS scripts -->
+    <script src="{% static 'js1/core/jquery.min.js' %}"></script>
+    <script src="{% static 'js1/core/popper.min.js' %}"></script>
+    <script src="{% static 'js1/core/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js1/core/jquery.slimscroll.min.js' %}"></script>
+    <script src="{% static 'js1/core/jquery.scrollLock.min.js' %}"></script>
+    <script src="{% static 'js1/core/jquery.appear.min.js' %}"></script>
+    <script src="{% static 'js1/core/jquery.countTo.min.js' %}"></script>
+    <script src="{% static 'js1/core/js.cookie.min.js' %}"></script>
+    <script src="{% static 'js1/codebase.js' %}"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <script src="{% static 'js1/plugins/chartjs/Chart.bundle.min.js' %}"></script>
+    <script src="{% static 'js1/pages/be_pages_dashboard.js' %}"></script>
+
+</body>
+</html>
 {% endblock %}
