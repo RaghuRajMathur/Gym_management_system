@@ -14,108 +14,54 @@
 	    alert('Something went wrong, Try Again');
      </script>
 {% endif %}
-
-<html lang="en" class="no-focus">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Gym Management System - Add Equipment</title>
-    <link rel="stylesheet" href="{% static 'css/addEquipment.css' %}">
-    <script>
-        function validateForm() {
-            // Validate Equipment Name (only letters and spaces)
-            let name = document.forms["addEquipmentForm"]["name"].value;
-            let nameRegex = /^[a-zA-Z\s]+$/;
-            if (!nameRegex.test(name)) {
-                alert("Equipment Name must contain only alphabetic characters and spaces.");
-                return false;
-            }
-
-            // Validate Price (numeric and greater than zero)
-            let price = document.forms["addEquipmentForm"]["price"].value;
-            if (isNaN(price) || price <= 0) {
-                alert("Price must be a positive number.");
-                return false;
-            }
-
-            // Validate Unit (only letters and spaces)
-            let unit = document.forms["addEquipmentForm"]["unit"].value;
-        let unitRegex = /^[a-zA-Z0-9\s]+$/; // Alphanumeric and spaces allowed
-        if (unit === "" || !unitRegex.test(unit)) {
-            alert("Unit must contain only letters, numbers, and spaces.");
-            return false;
-        }
-
-            // Validate Purchase Date (required, date should not be in the future)
-            let purchaseDate = document.forms["addEquipmentForm"]["purchasedate"].value;
-            let currentDate = new Date().toISOString().split('T')[0];
-            if (purchaseDate > currentDate) {
-                alert("Purchase Date cannot be in the future.");
-                return false;
-            }
-
-            // Validate Description (optional, max length 255 characters)
-            let description = document.forms["addEquipmentForm"]["description"].value;
-            if (description.length > 255) {
-                alert("Description cannot exceed 255 characters.");
-                return false;
-            }
-
-            return true;
-        }
-    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Equipment</title>
+    <link rel="stylesheet" href="{% static 'css/add-style.css' %}" >
 </head>
 
 <body>
-    <br><br><br><br>
-    <div class="container card shadow mt-5">
-        <div class="card-body">
-            <h5 class="p-2" style="border-bottom: 2px solid orange">Add Equipment</h5>
-            <br>
-            <div class="container-fluid">
-                <form name="addEquipmentForm" method="post" onsubmit="return validateForm()">
-                    {% csrf_token %}
+    <div class="outer-box">
+        <video autoplay loop muted plays-inline class="back-video">
+            <source src="static/images/bgvideo2.mp4">
+        </video>
+        <div class="inner-box">
+            <header class="header">
+                <h1>Add Equipment</h1>
+            </header>
+            <main class="form-body">
+                <form>
+                    <p>
+                        <label for="equipmentname">Equipment Name</label>
+                        <input type="text" id="equipmentname" placeholder="Enter Equipment Name" required>
+                    </p>
+                    <p>
+                        <label for="prize">Contact</label>
+                        <input type="number" id="prize" placeholder="Enter Prize" required>
+                    </p>
+                    <p>
+                        <label for="unit">Unit</label>
+                        <input type="email" id="unit" placeholder="Enter Unit" required>
+                    </p>
+                    <p>
+                        <label for="purchasedate">Purchase Date</label>
+                        <input type="date" id="purchasedate" placeholder="Enter Purchase Date" required>
+                    </p>
+                    <p>
+                        <label for="description">Description</label><br>
+                        <textarea name="Description" id="description" cols="52" rows=10"></textarea>
+                    </p>
+                    <p>
+                        <input type="submit" id="submit" value="Submit">
+                    </p>
 
-                    <div class="col-sm-9">
-                        <div class="form-group">
-                            <label>Equipment Name</label>
-                            <input type="text" name="name" class="form-control" placeholder="Enter Equipment Name" required>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-9">
-                        <div class="form-group">
-                            <label>Price</label>
-                            <input type="text" name="price" class="form-control" placeholder="Enter Price (In Rs.)" required>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-9">
-                        <div class="form-group">
-                            <label>Unit</label>
-                            <input type="text" name="unit" class="form-control" placeholder="Enter Unit" required>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-9">
-                        <div class="form-group">
-                            <label>Purchase Date</label>
-                            <input type="date" name="purchasedate" class="form-control" required>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-9">
-                        <div class="form-group">
-                            <label>Description</label>
-                            <textarea name="description" class="form-control" placeholder="Describe about Equipment"></textarea>
-                        </div>
-                    </div>
-
-                    <hr>
-                    <input type="submit" value="Submit" class="btn btn-primary">
-                </form>
-            </div>
+            </main>
         </div>
-    </div><!-- JS scripts -->
+    </div>
+    <!-- JS scripts -->
     <script src="{% static 'js1/core/jquery.min.js' %}"></script>
     <script src="{% static 'js1/core/popper.min.js' %}"></script>
     <script src="{% static 'js1/core/bootstrap.min.js' %}"></script>

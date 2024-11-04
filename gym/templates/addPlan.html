@@ -15,46 +15,49 @@
      </script>
 {% endif %}
 
-<html lang="en" class="no-focus">
+<!DOCTYPE html>
+<html lang="en">
 
-<title>Gym Management System - Add Plan</title>
-<link rel="stylesheet"  href="{% static 'css/addPlan.css' %}">
-<br><br><br><br>
-<div class="container card shadow mt-5">
-    <div class="card-body">
-        <h5 class="p-2" style="border-bottom: 2px solid orange">Add Plan</h5>
-        <br>
-        <div class="container-fluid">
-            <form name="addPlanForm" method="post" onsubmit="return validatePlanForm()">
-                {% csrf_token %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Plan</title>
+    <link rel="stylesheet" href="{% static 'css/add-style.css' %}" >
+</head>
 
-                <div class="col-sm-9">
-                    <div class="form-group">
-                        <label>Plan Name</label>
-                        <input type="text" name="name" class="form-control" placeholder="Enter Plan Name" required>
-                    </div>
-                </div>
+<body>
+    <div class="outer-box">
+        <video autoplay loop muted plays-inline class="back-video">
+            <source src="static/images/bgvideo2.mp4">
+        </video>
+        <div class="inner-box">
+            <header class="header">
+                <h1>Add Plan</h1>
+            </header>
+            <main class="form-body">
+                <form>
+                    <p>
+                        <label for="name">Name</label>
+                        <input type="text" id="name" placeholder="Enter Your Name" required>
+                    </p>
+                    <p>
+                        <label for="amount">Amount</label>
+                        <input type="number" id="amount" placeholder="Enter Amount" required>
+                    </p>
+                    <p>
+                        <label for="duration">Duration</label>
+                        <input type="text" id="duration" placeholder="Enter The Duraton" required>
+                    </p>
+                    <p>
+                        <input type="submit" id="submit" value="Submit"><br>
+                    </p>
+                </form>
 
-                <div class="col-sm-9">
-                    <div class="form-group">
-                        <label>Amount</label>
-                        <input type="text" name="amount" class="form-control" placeholder="Enter Amount (In RS.)" required>
-                    </div>
-                </div>
 
-                <div class="col-sm-9">
-                    <div class="form-group">
-                        <label>Duration</label>
-                        <input type="text" name="duration" class="form-control" placeholder="Enter Duration (In Month)" required>
-                    </div>
-                </div>
-
-                <hr>
-                <input type="submit" value="Submit" class="btn btn-primary">
-            </form>
+            </main>
         </div>
     </div>
-</div>
+    <body>
 
 <script src="{% static 'js1/core/jquery.min.js' %}"></script>
 <script src="{% static 'js1/core/popper.min.js' %}"></script>
