@@ -8,7 +8,7 @@ def send_enquiry_email(issue, message, sender_email, recipient_list):
     email = EmailMessage(
         subject,
         body,
-        "dirghayu1777@gmail.com",  # This will be the "From" address
+        "gymsync.official@gmail.com",  # This will be the "From" address
         recipient_list,  # List of recipient email addresses
         reply_to=[sender_email],  # Reply-to email is the sender's email
     )
