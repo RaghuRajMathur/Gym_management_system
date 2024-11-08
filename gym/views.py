@@ -124,8 +124,7 @@ def addEnquiry(request):
             error = "no"
         except:
             error = "yes"
-    return render(request, "addEnquiry.html", locals())
-
+    return render(request,'add_enquiry.html', locals())
 
 def viewEnquiry(request):
     if not request.user.is_authenticated:
@@ -402,7 +401,7 @@ def changePassword(request):
 def member_queries(request):
     # Fetch all member queries from the database
     queries = MemberEnquiry.objects.all()
-
+    
     # Render the queries to a template
     return render(request, "member_queries.html", {"queries": queries})
 

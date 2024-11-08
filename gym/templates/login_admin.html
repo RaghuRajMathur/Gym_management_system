@@ -19,10 +19,11 @@
       <title>Admin Login</title>
       <link rel="stylesheet" href="{% static 'css/login_admin.css' %}">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    </head>
    <body>
       <video autoplay muted loop playsinline class="background-video">
-         <source src="static/images/mylivewallpapers-com-Hulk-Gym-4K.mp4" type="video/mp4" />
+         <source src="{% static 'images/mylivewallpapers-com-Hulk-Gym-4K.mp4' %}" type="video/mp4" />
        </video>
       <div class="wrapper">
          <div class="title-text">
@@ -32,13 +33,13 @@
          </div>
          <div class="form-container">
             <div class="form-inner">
-               <form method="post" class="login">
+               <form method="post" class="login" onsubmit="return validateForm()">
                   {% csrf_token %}
                   <div class="field">
-                     <input type="text" name="uname" placeholder="Username" required>
+                     <input type="text" id="uname" name="uname" placeholder="Username" pattern="[A-Za-z0-9]+" title="Alphanumeric characters only" required>
                   </div>
                   <div class="field">
-                     <input type="password" name="pwd" placeholder="Password" required>
+                     <input type="password" id="pwd" name="pwd" placeholder="Password" required>
                   </div>
                   <div class="field btn">
                      <input type="submit" value="Login">
@@ -50,5 +51,36 @@
             </div>
          </div>
       </div>
+
+      <script>
+         function validateForm() {
+            var uname = document.getElementById("uname").value;
+            var pwd = document.getElementById("pwd").value;
+
+            // Ensure username contains only alphanumeric characters
+            var usernameRegex = /^[a-zA-Z0-9]+$/;
+            if (!usernameRegex.test(uname)) {
+               alert("Username can only contain letters and numbers.");
+               return false;
+            }
+
+            // Check if password meets basic criteria (at least 6 characters long)
+            if (pwd.length < 6) {
+               alert("Password must be at least 6 characters long.");
+               return false;
+            }
+            return true;
+         }
+
+         // Toggle password visibility
+         function togglePasswordVisibility() {
+            var pwdField = document.getElementById("pwd");
+            if (pwdField.type === "password") {
+               pwdField.type = "text";
+            } else {
+               pwdField.type = "password";
+            }
+         }
+      </script>
    </body>
 </html>

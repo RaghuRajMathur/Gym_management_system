@@ -1,0 +1,72 @@
+/* viewEquipment.css */
+
+/* General styles */
+body {
+    background-color: #f8f9fa; /* Light background color */
+}
+
+.container {
+    margin-top: 50px; /* Space from the top */
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff; /* White background for the card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+/* Card Header */
+.card-body h5 {
+    font-size: 1.5rem;
+    color: #333; /* Darker text for the header */
+}
+
+/* Table Styles */
+.table {
+    width: 100%; /* Full width */
+    border-collapse: collapse; /* Collapse borders */
+}
+
+.table th, .table td {
+    padding: 12px; /* Padding inside table cells */
+    text-align: left; /* Left align text */
+    border-bottom: 1px solid #ddd; /* Bottom border for table rows */
+}
+
+.table th {
+    background-color: #5d4037; /* Dark brown background for header */
+    color: #fff; /* White text color for header */
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f2f2f2; /* Light gray background for odd rows */
+}
+
+/* Button Styles */
+.btn {
+    margin: 0 5px; /* Space between buttons */
+}
+
+.btn-primary {
+    background-color: #007bff; /* Primary button color */
+    border: none; /* Remove border */
+}
+
+.btn-danger {
+    background-color: #dc3545; /* Danger button color */
+    border: none; /* Remove border */
+}
+
+.btn:hover {
+    opacity: 0.9; /* Slightly transparent on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .table {
+        font-size: 14px; /* Smaller font on mobile */
+    }
+
+    .btn {
+        width: 100%; /* Full-width buttons on small screens */
+        margin: 5px 0; /* Space above and below buttons */
+    }
+}

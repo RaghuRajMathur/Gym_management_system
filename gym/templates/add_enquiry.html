@@ -14,55 +14,71 @@
 {% endif %}
 
 <!DOCTYPE html>
-<html lang="en" class="no-focus">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Gym Management System - Add Enquiry</title>
-    <link rel="stylesheet" href="{% static 'css/addEnquiry.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Enquiry</title>
+    <link rel="stylesheet" href="{% static 'css/add-style.css' %}" >
 </head>
+
 <body>
+    <div class="outer-box">
+        <video autoplay loop muted plays-inline class="back-video">
+            <source src="static/images/bgvideo2.mp4">
+        </video>
+        <div class="inner-box">
+            <header class="header">
+                <h1>Add Enquiry</h1>
+            </header>
+            <main class="form-body">
+                <form>
+                    <p>
+                        <label for="name">Name</label>
+                        <input type="text" id="name" placeholder="Enter Your Name" required>
+                    </p>
+                    <p>
+                        <label for="contact">Contact</label>
+                        <input type="number" id="contact" placeholder="Enter Your Number" required>
+                    </p>
+                    <p>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="example@gmail.com" required>
+                    </p>
+                    <p>
+                        <label for="age">Age</label>
+                        <input type="date" id="age" placeholder="Enter Your Age" required>
+                    </p>
+                    <p>Mention Your Gender</p>
 
-    <div class="container card shadow">
-        <div class="card-body">
-            <h5>Add Enquiry</h5>
-            <form method="post" novalidate>
-                {% csrf_token %}
-                
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" class="form-control" placeholder="Enter Name" required>
-                </div>
+                    <input name="gender" type="radio" id="male">
+                    <label for="male">Male</label><br>
 
-                <div class="form-group">
-                    <label for="mobile">Contact Number</label>
-                    <input type="text" id="mobile" name="mobile" class="form-control" placeholder="Enter Mobile Number" required>
-                </div>
+                    <input name="gender" type="radio" id="female">
+                    <label for="female">Female</label><br>
 
-                <div class="form-group">
-                    <label for="email">Email ID</label>
-                    <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email ID" required>
-                </div>
+                    <input name="gender" type="radio" id="other">
+                    <label for="other">Other</label><br>
 
-                <div class="form-group">
-                    <label for="age">Enter Age</label>
-                    <input type="number" id="age" name="age" class="form-control" placeholder="Enter Age (In Years)" required>
-                </div>
 
-                <div class="form-group">
-                    <label>Gender</label><br>
-                    <input type="radio" id="male" name="gender" value="Male" required>
-                    <label for="male">Male</label>
-                    
-                    <input type="radio" id="female" name="gender" value="Female" required>
-                    <label for="female">Female</label>
-                </div>
+                    <p>
+                        <input type="submit" id="submit" value="Submit"><br>
+                    </p>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+
+                </form>
+
+            </main>
         </div>
+
+
+
+
     </div>
 
 </body>
+
 </html>
 
 {% endblock %}
