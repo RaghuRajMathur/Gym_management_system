@@ -46,14 +46,29 @@ class Equipment(models.Model):
 
     def __str__(self):
         return self.name
+    
+class Trainer(models.Model):
+    trainer_id = models.AutoField(primary_key=True)  
+    trainer_name = models.CharField(max_length=150, null=False)  
+    trainer_password = models.CharField(max_length=100, default='default_password')
+    chatroom_id = models.CharField(max_length=50, null=True)
+    contact = models.CharField(max_length=15, null=True)  
+    email = models.EmailField(max_length=50, null=True)  
+    gender = models.CharField(max_length=10, null=True)  
+
+    def __str__(self):
+        return self.trainer_name
+
 
 class Member(models.Model):
     name = models.CharField(max_length=150, null=True)
     contact = models.CharField(max_length=15, null=True)
     email = models.CharField(max_length=50, null=True)
+    password = models.CharField(max_length=100, default='default_password')
     gender = models.CharField(max_length=10, null=True)
     plan = models.CharField(max_length=100, null=True)
     joindate = models.DateField(null=True)
+    chatroom_id = models.CharField(max_length=50, null=True)
     initamount = models.CharField(max_length=100, null=True)
 
     def __str__(self):
@@ -66,3 +81,4 @@ class Plan(models.Model):
 
     def __str__(self):
         return self.name
+

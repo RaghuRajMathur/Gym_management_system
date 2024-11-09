@@ -298,6 +298,24 @@ def addMember(request):
     d = {"error": error, "plan": plan1}
     return render(request, "addMember.html", d)
 
+from .models import Member  # Adjust this import if Member is in another app
+
+def member_login(request):
+    error = ""
+    if request.method == "POST":
+        username = request.POST.get("uname")
+        password = request.POST.get("pwd")
+        
+        # Authenticate the member using username and password
+        user = authenticate(username=username, password=password)
+        
+        if user is not None:
+            login(request, user)
+            error = "no"  # Login successful
+        else:
+            error = "yes"  # Login failed, incorrect credentials
+
+    return render(request, "member_login.html", {"error": error})
 
 def viewMember(request):
     if not request.user.is_authenticated:

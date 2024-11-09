@@ -42,6 +42,7 @@ urlpatterns = [
     path('edit_Equipment/<int:pid>', edit_Equipment, name='edit_Equipment'),
     path('delete_Equipment/<int:pid>', delete_Equipment, name='delete_Equipment'),
     path('addMember', addMember, name='addMember'),
+    path('member/login/', views.member_login, name='member_login'),
     path('viewMember', viewMember, name='viewMember'),
     path('edit_Member/<int:pid>', edit_Member, name='edit_Member'),
     path('delete_Member/<int:pid>', delete_Member, name='delete_Member'),
