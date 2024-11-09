@@ -86,11 +86,14 @@ def member_enquiry(request):
         enquiry.save()
 
         recipient_list = [
-            "dirghayu1777@gmail.com",
-            "raghuu715@gmail.com",
-            "suryastiwari2222@gmail.com",
+            "gymsync.official@gmail.com",
         ]
-
+        if branch == "Branch 1":
+            recipient_list.append("raghuu715@gmail.com")
+        elif branch == "Branch 2":
+            recipient_list.append("dirghayu1777@gmail.com")
+        else:
+            recipient_list.append("suryastiwari2222@gmail.com")
         # Send the email
         try:
             send_enquiry_email(issue, message, emailid, recipient_list)
@@ -98,6 +101,9 @@ def member_enquiry(request):
         except:
             error = "yes"
 
+        recipient_list = [
+            "gymsync.official@gmail.com",
+        ]
         return render(request, "member_enquiry.html", {"error": error})
 
     return render(request, "member_enquiry.html")
