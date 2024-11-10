@@ -30,6 +30,7 @@ urlpatterns = [
     path("member-queries/", views.member_queries, name="member_queries"),
     path("admin_home", admin_home, name="admin_home"),
     path("member_home", member_home, name="member_home"),
+    path("failure", failure, name="failure"),
     path("addEnquiry", addEnquiry, name="addEnquiry"),
     path("viewEnquiry", viewEnquiry, name="viewEnquiry"),
     path("member_plan/", views.member_plans, name="member_plan"),
