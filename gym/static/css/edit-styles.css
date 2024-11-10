@@ -1,0 +1,143 @@
+/* General Body and Container Styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #1F242D;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative; /* Ensure the content is above the background */
+  z-index: 1;
+}
+
+/* Card Styling with Blur Effect */
+.card {
+  background-color: rgba(255, 255, 255, 0.8);  /* Semi-transparent white */
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);  /* Apply blur effect to the background */
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  border: none;  /* Remove border to allow the blur to show through */
+}
+
+/* Heading Styling */
+h5 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  border-bottom: 3px solid goldenrod;
+}
+
+/* Form Styling */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  box-shadow: none;
+  margin-top: 5px;
+}
+
+.form-control:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #dee2e6;
+  margin: 20px 0;
+}
+
+/* Button Styling */
+.btn {
+  padding: 12px 20px;
+  font-size: 14px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+/* Radio Button Styling */
+input[type="radio"] {
+  margin-right: 5px;
+}
+
+input[type="radio"]:checked + label {
+  color: #3498db;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+      padding: 10px;
+  }
+
+  h5 {
+      font-size: 20px;
+  }
+
+  .form-control {
+      padding: 8px;
+  }
+
+  .btn {
+      font-size: 12px;
+      padding: 10px;
+  }
+}
+
+/* Background Video Styling */
+.back-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover; /* Ensures the video covers the entire background */
+  z-index: -1; /* Keeps the video behind the content */
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .back-video {
+      width: 100%;
+      height: auto;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .back-video {
+      width: auto;
+      height: 100%;
+  }
+}

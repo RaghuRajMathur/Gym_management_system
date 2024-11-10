@@ -169,3 +169,22 @@
   }
   
 }
+
+/* Additional Styles for Change Password Card */
+.card__img .fa-key {
+    font-size: 5rem;
+    color: #f7ef8a;
+    margin-bottom: 1rem;
+}
+.card__title {
+    font-weight: bold;
+    font-size: 20px;
+}
+.card__subtitle {
+    font-size: 18px;
+    color: #f7ef8a;
+}
+.card:hover {
+    box-shadow: 0px 0px 20px -5px #000;
+    transform: scale(1.05);
+}

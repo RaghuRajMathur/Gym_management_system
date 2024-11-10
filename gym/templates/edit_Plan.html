@@ -4,75 +4,67 @@
 
 {% if error == "no" %}
      <script>
-	   alert('Your Plan Updated');
-	   window.location.href ="{% url 'viewPlan' %}";
+       alert('Your Plan Updated');
+       window.location.href ="{% url 'viewPlan' %}";
      </script>
 {% endif %}
 
 {% if error == "yes" %}
      <script>
-	    alert('Something went wrong, Try Again');
+        alert('Something went wrong, Try Again');
      </script>
 {% endif %}
 
- <html lang="en" class="no-focus">
+<html lang="en" class="no-focus">
 
- <title>Gym Management System - Edit Plan</title>
- <link rel="stylesheet" id="css-main" href="{% static 'css1/codebase.min.css' %}">
- <br><br><br><br>
-	<div class="container card shadow mt-5">
-		<div class="card-body">
-			<h5 class="p-2" style="border-bottom: 2px solid orange">Edit Plan</h5>
-             <br>
-			<div class="container-fluid">
-					<form method="post">
-                     {% csrf_token %}
+<title>Gym Management System - Edit Plan</title>
+<link rel="stylesheet" href="{% static 'css/edit-styles.css' %}">
 
-                        <div class="col-sm-9">
-							<div class="form-group">
-								<label>Plan Name</label>
-                                <input type="text" name="name" class="form-control" value="{{plan.name}}">
-							</div>
-						</div>
+<br><br><br><br>
 
-                        <div class="col-sm-9">
-							<div class="form-group">
-								<label>Amount</label>
-                                <input type="text" name="amount" class="form-control" value="{{plan.amount}}">
-							</div>
-						</div>
+<!-- Background Video -->
+<video autoplay muted loop class="back-video">
+    <source src="{% static 'images/bgvideo2.mp4' %}" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+<div class="container card shadow mt-5">
+    <div class="card-body">
+        <h5>Edit Plan</h5>
+        <div class="container-fluid">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="name">Plan Name</label>
+                    <input type="text" name="name" class="form-control" id="name" value="{{ plan.name }}">
+                </div>
 
-                        <div class="col-sm-9">
-							<div class="form-group">
-								<label>Duration</label>
-                                <input type="text" name="duration" class="form-control" value="{{plan.duration}}">
-							</div>
-						</div>
+                <div class="form-group">
+                    <label for="amount">Amount</label>
+                    <input type="text" name="amount" class="form-control" id="amount" value="{{ plan.amount }}">
+                </div>
 
-						<hr>
-						<input type="submit" value="Update" class="btn btn-primary">
-					</form>
-				</div>
-			</div>
-		</div>
+                <div class="form-group">
+                    <label for="duration">Duration</label>
+                    <input type="text" name="duration" class="form-control" id="duration" value="{{ plan.duration }}">
+                </div>
 
-<!-- Codebase Core JS -->
-        <script src="{% static 'js1/core/jquery.min.js' %}"></script>
-        <script src="{% static 'js1/core/popper.min.js' %}"></script>
-        <script src="{% static 'js1/core/bootstrap.min.js' %}"></script>
-        <script src="{% static 'js1/core/jquery.slimscroll.min.js' %}"></script>
-        <script src="{% static 'js1/core/jquery.scrollLock.min.js' %}"></script>
-        <script src="{% static 'js1/core/jquery.appear.min.js' %}"></script>
-        <script src="{% static 'js1/core/jquery.countTo.min.js' %}"></script>
-        <script src="{% static 'js1/core/js.cookie.min.js' %}"></script>
-        <script src="{% static 'js1/codebase.js' %}"></script>
+                <hr>
+                <input type="submit" value="Update" class="btn btn-primary">
+            </form>
+        </div>
+    </div>
+</div>
 
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-        <!-- Page JS Plugins -->
-        <script src="{% static 'js1/plugins/chartjs/Chart.bundle.min.js' %}"></script>
+<!-- External JS and CSS -->
+<script src="{% static 'js1/core/jquery.min.js' %}"></script>
+<script src="{% static 'js1/core/popper.min.js' %}"></script>
+<script src="{% static 'js1/core/bootstrap.min.js' %}"></script>
+<script src="{% static 'js1/core/jquery.slimscroll.min.js' %}"></script>
+<script src="{% static 'js1/core/jquery.scrollLock.min.js' %}"></script>
+<script src="{% static 'js1/core/jquery.appear.min.js' %}"></script>
+<script src="{% static 'js1/core/jquery.countTo.min.js' %}"></script>
+<script src="{% static 'js1/core/js.cookie.min.js' %}"></script>
+<script src="{% static 'js1/codebase.js' %}"></script>
 
-        <!-- Page JS Code -->
-        <script src="{% static 'js1/pages/be_pages_dashboard.js' %}"></script>
-
- </html>
+</html>
 {% endblock %}
