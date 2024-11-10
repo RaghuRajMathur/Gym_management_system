@@ -17,80 +17,67 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Member</title>
-    <link rel="stylesheet" href="{% static 'css/add-style.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/add-style.css' %}">
 </head>
-
 <body>
     <div class="outer-box">
         <video autoplay loop muted plays-inline class="back-video">
-            <source src="static/images/bgvideo2.mp4">
+            <source src="{% static 'images/bgvideo2.mp4' %}">
         </video>
         <div class="inner-box">
             <header class="header">
                 <h1>Add Member</h1>
             </header>
             <main class="form-body">
-                <form>
+                <!-- Added action and method attributes -->
+                <form action="{% url 'addMember' %}" method="POST">
+                    {% csrf_token %}
                     <p>
                         <label for="name">Name</label>
-                        <input type="text" id="name" placeholder="Enter Your Name" required>
+                        <input type="text" id="name" name="name" placeholder="Enter Your Name" required>
                     </p>
                     <p>
                         <label for="contact">Contact</label>
-                        <input type="number" id="contact" placeholder="Enter Your Number" required>
+                        <input type="number" id="contact" name="contact" placeholder="Enter Your Number" required>
                     </p>
                     <p>
                         <label for="email">Email</label>
-                        <input type="email" id="email" placeholder="example@gmail.com" required>
+                        <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
                     </p>
                     <p>
                         <label for="jdate">Joining Date</label>
-                        <input type="date" id="jdate" placeholder="Enter Joining Date" required>
+                        <input type="date" id="jdate" name="joindate" placeholder="Enter Joining Date" required>
                     </p>
                     <p>Mention Your Gender</p>
-
-                    <input name="gender" type="radio" id="male">
+                    <input name="gender" type="radio" id="male" value="Male">
                     <label for="male">Male</label><br>
-
-                    <input name="gender" type="radio" id="female">
+                    <input name="gender" type="radio" id="female" value="Female">
                     <label for="female">Female</label><br>
-
-                    <input name="gender" type="radio" id="other">
+                    <input name="gender" type="radio" id="other" value="Other">
                     <label for="other">Other</label><br>
                     <p>
                         <label for="plans">Mention Plan</label>
-                        <select id="plans" name="plans">
-                            <option value="plan1">Plan 1</option>
-                            <option value="plan2">Plan 2</option>
-                            <option value="plan3">Plan 3</option>
+                        <select id="plans" name="plan">
+                            <option value="Silver Plan Double">Silver Plan Double</option>
+                            <option value="	Silver Plan">Silver Plan</option>
+                            <option value="Golden Plan">Golden Plan</option>
                         </select>
                     </p>
                     <p>
                         <label for="iamount">Initial Amount</label>
-                        <input type="number" id="iamount" placeholder="Enter Initial Amount" required>
+                        <input type="number" id="iamount" name="initamount" placeholder="Enter Initial Amount" required>
                     </p>
-
-
                     <p>
                         <input type="submit" id="submit" value="Submit"><br>
                     </p>
-
-
                 </form>
-
             </main>
         </div>
-
-
-
-
     </div>
-
 </body>
 </html>
 {% endblock %}

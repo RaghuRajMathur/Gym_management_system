@@ -1,5 +1,4 @@
 {% load static %}
-
 {% if error == "no" %}
     <script>
         alert('Logged In Successfully');
@@ -14,60 +13,36 @@
 {% endif %}
 
 <html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title>Member Login</title>
-        <link rel="stylesheet" href="{% static 'css/member_login.css' %}">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    </head>
-    <body>
-        <video autoplay muted loop playsinline class="background-video">
-            <source src="{% static 'images/mylivewallpapers-com-Hulk-Gym-4K.mp4' %}" type="video/mp4" />
-        </video>
-        <div class="wrapper">
-            <div class="title-text">
-                <div class="title login">Member Login</div>
-            </div>
-            <div class="form-container">
-                <div class="form-inner">
-                    <form method="post" class="login" onsubmit="return validateForm()">
-                        {% csrf_token %}
-                        <div class="field">
-                            <input type="text" id="uname" name="uname" placeholder="Username" pattern="[A-Za-z0-9]+" title="Alphanumeric characters only" required>
-                        </div>
-                        <div class="field">
-                            <input type="password" id="pwd" name="pwd" placeholder="Password" required>
-                        </div>
-                        <div class="btn field">
-                            <input type="submit" value="Login">
-                        </div>
-                        <!-- Back to Home button styled as a button -->
-                        <a href="{% url 'index' %}" class="btn back-to-home">Back to Home</a>
-                    </form>
-                </div>
+<head>
+    <meta charset="utf-8">
+    <title>Member Login</title>
+    <link rel="stylesheet" href="{% static 'css/member_login.css' %}">
+</head>
+<body>
+    <video autoplay muted loop playsinline class="background-video">
+        <source src="{% static 'images/mylivewallpapers-com-Hulk-Gym-4K.mp4' %}" type="video/mp4" />
+    </video>
+    <div class="wrapper">
+        <div class="title-text">
+            <div class="title login">Member Login</div>
+        </div>
+        <div class="form-container">
+            <div class="form-inner">
+                <form method="post" class="login">
+                    {% csrf_token %}
+                    <div class="field">
+                        <input type="text" id="uname" name="uname" placeholder="Username" required>
+                    </div>
+                    <div class="field">
+                        <input type="password" id="pwd" name="pwd" placeholder="Password" required>
+                    </div>
+                    <div class="btn field">
+                        <input type="submit" value="Login">
+                    </div>
+                    <a href="{% url 'index' %}" class="btn back-to-home">Back to Home</a>
+                </form>
             </div>
         </div>
-
-        <script>
-            function validateForm() {
-                var uname = document.getElementById("uname").value;
-                var pwd = document.getElementById("pwd").value;
-
-                // Ensure username contains only alphanumeric characters
-                var usernameRegex = /^[a-zA-Z0-9]+$/;
-                if (!usernameRegex.test(uname)) {
-                    alert("Username can only contain letters and numbers.");
-                    return false;
-                }
-
-                // Check if password meets basic criteria (at least 6 characters long)
-                if (pwd.length < 6) {
-                    alert("Password must be at least 6 characters long.");
-                    return false;
-                }
-                return true;
-            }
-        </script>
-    </body>
+    </div>
+</body>
 </html>
