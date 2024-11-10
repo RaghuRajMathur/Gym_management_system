@@ -9,6 +9,7 @@ from django.http import HttpResponse, JsonResponse
 import random
 from django.contrib import messages
 from .models import Member
+from django.core.paginator import Paginator
 import openai
 # Create your views here.
 openai.api_key = ""
@@ -31,7 +32,11 @@ def admin_login(request):
                 error = "yes"
         except:
             error = "yes"
+            return render(request, "failure.html")
     return render(request, "login_admin.html", locals())
+
+def failure(request):
+    return render(request, "failure.html")
 
 
 def admin_home(request):
@@ -349,6 +354,7 @@ def addMember(request):
         except Exception as ex:
             print("Error adding member:", ex)
             error = "yes"
+            return render(request, "failure.html")
 
     d = {"error": error, "plan": plan1}
     return render(request, "addMember.html", d)
@@ -369,6 +375,7 @@ def member_login(request):
             error = "no"  # Login successful
         except Member.DoesNotExist:
             error = "yes"  # Login failed, incorrect credentials
+            return render(request, "failure.html")
 
     return render(request, "member_login.html", {"error": error})
 
@@ -513,7 +520,7 @@ def checkview(request):
         messages.error(
             request, "Invalid room name, username, or password. Please try again."
         )
-        return redirect("home")
+        return redirect("failure")
 
 
 def send(request):
@@ -528,9 +535,11 @@ def send(request):
 
 def getMessages(request, room):
     room_details = Room.objects.get(name=room)
-
-    messages = Message.objects.filter(room=room_details.id)
-    return JsonResponse({"messages": list(messages.values())})
+    # Get the latest 5 messages in descending order and convert to a list of dictionaries
+    messages = list(Message.objects.filter(room=room_details.id).order_by('-date').values()[:5])
+    # Reverse the list to show the oldest message at the top
+    messages.reverse()
+    return JsonResponse({"messages": messages})
 
 
 def generate_diet_plan(height, weight, sex, age, activity_level):

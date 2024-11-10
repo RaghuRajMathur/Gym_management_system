@@ -56,9 +56,9 @@ var myObject = new Vue({
             { img: 'https://livedemo00.template-help.com/wt_62267_v8/prod-20823-one-service/images/testimonials-03-179x179.png' }
         ],
         testimonials: [
-            { quote: 'I have tried a lot of food delivery services but Plate is something out of this world! Their food is really healthy and it tastes great, which is why I recommend this company to all my friends!', name: 'peter lee' },
-            { quote: 'The quality of service and professionalism provided by the team is truly commendable!', name: 'john doe' },
-            { quote: 'An amazing experience, truly worth every penny. I recommend it to all my colleagues!', name: 'sarah smith' }
+            { quote: 'GymSync has completely transformed my fitness journey! The personalized training plans and real-time communication with my trainer have helped me stay on track and achieve goals I never thought possible.', name: 'peter lee' },
+            { quote: 'The trainers at GymSync are fantastic! Their expertise and the focus on core strength have made a huge difference in my performance. The positive environment keeps me motivated every day!', name: 'john doe' },
+            { quote: 'I love how GymSync integrates everything I need—personalized workout plans, easy communication with my trainer, and real-time equipment availability. Its the most efficient and motivating gym experience I ever had!', name: 'sarah smith' }
         ],
         isTitleVisible: false
     },
