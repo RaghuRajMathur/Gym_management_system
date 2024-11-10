@@ -11,7 +11,7 @@ from django.contrib import messages
 from .models import Member
 import openai
 # Create your views here.
-openai.api_key = "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"
+openai.api_key = ""
 
 def index(request):
     return render(request, "index.html")
