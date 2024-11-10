@@ -448,31 +448,22 @@ def member_plans(request):
 def changePassword(request):
     if not request.user.is_authenticated:
         return redirect("index")
-    
     error = ""
     user = request.user
-
     if request.method == "POST":
-        old_password = request.POST.get("oldpassword")
-        new_password = request.POST.get("newpassword")
-
+        o = request.POST["oldpassword"]
+        n = request.POST["newpassword"]
         try:
-            # Check if the provided old password is correct
-            if user.check_password(old_password):
-                # Set the new password
-                user.set_password(new_password)
-                user.save()
-
-                # Update session to keep the user logged in after password change
-                update_session_auth_hash(request, user)
-
-                error = "no"  # Indicates success
+            u = User.objects.get(id=request.user.id)
+            if user.check_password(o):
+                u.set_password(n)
+                u.save()
+                error = "no"
             else:
-                error = "not"  # Incorrect old password
-        except Exception as e:
-            error = "yes"  # General error
-
-    return render(request, "changePassword.html", {"error": error})
+                error = "not"
+        except:
+            error = "yes"
+    return render(request, "changePassword.html", locals())
 
 
 def member_queries(request):
