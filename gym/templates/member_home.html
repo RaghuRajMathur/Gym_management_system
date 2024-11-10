@@ -1,4 +1,4 @@
-{% include 'navbar.html' %}
+{% include 'member_nav.html' %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -21,8 +21,8 @@
 </div>
     <div class="card__subtitle">Gym Sync</div>
     <div class="card__wrapper">
-        <div class="card__title">ENQUIRIES</div>
-        <a href="{% url 'viewEnquiry' %}">
+        <div class="card__title">CHAT FORUM</div>
+        <a href="{% url 'home' %}">
         <div class="card__icon">
             <svg color="rgb(224, 223, 220)" style="user-select: none; width: 100%; height: 100%; display: inline-block; fill: rgb(224, 223, 220); flex-shrink: 0; cursor: auto;" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
                 <g color="rgb(224, 223, 220)">
@@ -37,17 +37,16 @@
     </div>
 </div>
 <div class="card">
-  <!-- Updated Image Section -->
  <div class="card__img">
-  <a href="{% url 'viewPlan' %}">
+  <a href="{% url 'member_enquiry' %}">
       
     <i class="fa-solid fa-book icon"></i>
   </a>
 </div>
   <div class="card__subtitle">Gym Sync</div>
   <div class="card__wrapper">
-      <div class="card__title">PLANS</div>
-      <a href="{% url 'viewPlan' %}">
+      <div class="card__title">ENQUIRE</div>
+      <a href="{% url 'member_enquiry' %}">
       <div class="card__icon">
           <svg color="rgb(224, 223, 220)" style="user-select: none; width: 100%; height: 100%; display: inline-block; fill: rgb(224, 223, 220); flex-shrink: 0; cursor: auto;" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
               <g color="rgb(224, 223, 220)">
@@ -61,19 +60,18 @@
     </a>
   </div>
 </div>
-</div>
+<!-- </div> -->
 <div class="card-container">
   <div class="card">
-      <!-- Updated Image Section -->
      <div class="card__img">
-      <a href="{% url 'viewEquipment' %}">
+      <a href="{% url 'member_plan' %}">
         <i class="fa-solid fa-dumbbell icon"></i>
       </a>
   </div>
       <div class="card__subtitle">Gym Sync</div>
       <div class="card__wrapper">
-          <div class="card__title">EQUIPMENTS</div>
-          <a href="{% url 'viewEquipment' %}">
+          <div class="card__title">MEMBER PLAN</div>
+          <a href="{% url 'member_plan' %}">
           <div class="card__icon">
               <svg color="rgb(224, 223, 220)" style="user-select: none; width: 100%; height: 100%; display: inline-block; fill: rgb(224, 223, 220); flex-shrink: 0; cursor: auto;" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
                   <g color="rgb(224, 223, 220)">
@@ -88,16 +86,15 @@
       </div>
   </div>
   <div class="card">
-    <!-- Updated Image Section -->
    <div class="card__img">
-    <a href="{% url 'viewMember' %}">
+    <a href="{% url 'personalized_diet_plan' %}">
       <i class="fa-solid fa-people-group icon"></i>
     </a>
   </div>
     <div class="card__subtitle">Gym Sync</div>
     <div class="card__wrapper">
-        <div class="card__title">MEMBERS</div>
-        <a href="{% url 'viewMember' %}">
+        <div class="card__title">Personalized Diet Plan</div>
+        <a href="{% url 'personalized_diet_plan' %}">
         <div class="card__icon">
             <svg color="rgb(224, 223, 220)" style="user-select: none; width: 100%; height: 100%; display: inline-block; fill: rgb(224, 223, 220); flex-shrink: 0; cursor: auto;" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
                 <g color="rgb(224, 223, 220)">

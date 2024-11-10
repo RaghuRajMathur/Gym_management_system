@@ -28,6 +28,7 @@ urlpatterns = [
     path("contact", contact, name="contact"),
     path("member_enquiry/", member_enquiry, name="member_enquiry"),  # Add this line
     path("member-queries/", views.member_queries, name="member_queries"),
+    path('personalized_diet_plan/', views.personalized_diet_plan, name='personalized_diet_plan'),
     path("admin_home", admin_home, name="admin_home"),
     path("member_home", member_home, name="member_home"),
     path("failure", failure, name="failure"),
@@ -60,4 +61,5 @@ urlpatterns = [
     path("home/checkview/", views.checkview, name="checkview"),
     path("send", views.send, name="send"),
     path("getMessages/<str:room>/", views.getMessages, name="getMessages"),
+    
 ]

@@ -4,23 +4,24 @@
 
 {% if error == "no" %}
      <script>
-	   alert('Your New Equipment has been Add Successfully');
-	   window.location.href ="{% url 'viewEquipment' %}";
+         alert('Your New Equipment has been Added Successfully');
+         window.location.href ="{% url 'viewEquipment' %}";
      </script>
 {% endif %}
 
 {% if error == "yes" %}
      <script>
-	    alert('Something went wrong, Try Again');
+         alert('Something went wrong, Try Again');
      </script>
 {% endif %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Equipment</title>
-    <link rel="stylesheet" href="{% static 'css/add-style.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/add-style.css' %}">
 </head>
 
 <body>
@@ -33,35 +34,36 @@
                 <h1>Add Equipment</h1>
             </header>
             <main class="form-body">
-                <form>
+                <form method="post">
+                    {% csrf_token %}
                     <p>
                         <label for="equipmentname">Equipment Name</label>
-                        <input type="text" id="equipmentname" placeholder="Enter Equipment Name" required>
+                        <input type="text" id="equipmentname" name="name" placeholder="Enter Equipment Name" required>
                     </p>
                     <p>
-                        <label for="prize">Contact</label>
-                        <input type="number" id="prize" placeholder="Enter Prize" required>
+                        <label for="prize">Prize</label>
+                        <input type="number" id="prize" name="price" placeholder="Enter Prize" required>
                     </p>
                     <p>
                         <label for="unit">Unit</label>
-                        <input type="email" id="unit" placeholder="Enter Unit" required>
+                        <input type="text" id="unit" name="unit" placeholder="Enter Unit" required>
                     </p>
                     <p>
                         <label for="purchasedate">Purchase Date</label>
-                        <input type="date" id="purchasedate" placeholder="Enter Purchase Date" required>
+                        <input type="date" id="purchasedate" name="purchasedate" placeholder="Enter Purchase Date" required>
                     </p>
                     <p>
                         <label for="description">Description</label><br>
-                        <textarea name="Description" id="description" cols="52" rows=10"></textarea>
+                        <textarea name="description" id="description" cols="52" rows="10" placeholder="Enter Description"></textarea>
                     </p>
                     <p>
                         <input type="submit" id="submit" value="Submit">
                     </p>
-
+                </form>
             </main>
         </div>
     </div>
-    <!-- JS scripts -->
+
     <script src="{% static 'js1/core/jquery.min.js' %}"></script>
     <script src="{% static 'js1/core/popper.min.js' %}"></script>
     <script src="{% static 'js1/core/bootstrap.min.js' %}"></script>
@@ -74,6 +76,50 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <script src="{% static 'js1/plugins/chartjs/Chart.bundle.min.js' %}"></script>
     <script src="{% static 'js1/pages/be_pages_dashboard.js' %}"></script>
+
+    <script>
+        function validateEquipmentForm() {
+            // Validate Equipment Name (only letters and spaces)
+            const equipmentName = document.getElementById('equipmentname').value.trim();
+            const namePattern = /^[A-Za-z\s]+$/;
+            if (!namePattern.test(equipmentName)) {
+                alert("Equipment Name should only contain letters and spaces.");
+                return false;
+            }
+
+            // Validate Prize (must be a positive number)
+            const prize = document.getElementById('prize').value;
+            if (isNaN(prize) || prize <= 0) {
+                alert("Prize must be a positive number.");
+                return false;
+            }
+
+            // Validate Unit (should contain alphanumeric characters)
+            const unit = document.getElementById('unit').value.trim();
+            const unitPattern = /^[A-Za-z0-9\s]+$/;
+            if (!unitPattern.test(unit)) {
+                alert("Unit should contain only alphanumeric characters.");
+                return false;
+            }
+
+            // Validate Purchase Date (should not be in the future)
+            const purchaseDate = new Date(document.getElementById('purchasedate').value);
+            const currentDate = new Date();
+            if (purchaseDate > currentDate) {
+                alert("Purchase Date cannot be in the future.");
+                return false;
+            }
+
+            // Validate Description (should not be empty)
+            const description = document.getElementById('description').value.trim();
+            if (description === "") {
+                alert("Description cannot be empty.");
+                return false;
+            }
+
+            return true; // Return true if all validations pass
+        }
+    </script>
 
 </body>
 </html>

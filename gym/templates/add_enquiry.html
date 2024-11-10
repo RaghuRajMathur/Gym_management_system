@@ -20,7 +20,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Enquiry</title>
-    <link rel="stylesheet" href="{% static 'css/add-style.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/add-style.css' %}">
 </head>
 
 <body>
@@ -33,52 +33,85 @@
                 <h1>Add Enquiry</h1>
             </header>
             <main class="form-body">
-                <form>
+                <form method="POST" onsubmit="return validateForm()">
+                    {% csrf_token %}
                     <p>
                         <label for="name">Name</label>
-                        <input type="text" id="name" placeholder="Enter Your Name" required>
+                        <input type="text" id="name" name="name" placeholder="Enter Your Name" required>
                     </p>
                     <p>
                         <label for="contact">Contact</label>
-                        <input type="number" id="contact" placeholder="Enter Your Number" required>
+                        <input type="number" id="contact" name="mobile" placeholder="Enter Your Number" required>
                     </p>
                     <p>
                         <label for="email">Email</label>
-                        <input type="email" id="email" placeholder="example@gmail.com" required>
+                        <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
                     </p>
                     <p>
                         <label for="age">Age</label>
-                        <input type="date" id="age" placeholder="Enter Your Age" required>
+                        <input type="date" id="age" name="age" placeholder="Enter Your Age" required>
                     </p>
                     <p>Mention Your Gender</p>
-
-                    <input name="gender" type="radio" id="male">
+                    <input name="gender" type="radio" id="male" value="Male">
                     <label for="male">Male</label><br>
-
-                    <input name="gender" type="radio" id="female">
+                    <input name="gender" type="radio" id="female" value="Female">
                     <label for="female">Female</label><br>
-
-                    <input name="gender" type="radio" id="other">
+                    <input name="gender" type="radio" id="other" value="Other">
                     <label for="other">Other</label><br>
-
-
+                
                     <p>
                         <input type="submit" id="submit" value="Submit"><br>
                     </p>
-
-
                 </form>
-
+                
             </main>
         </div>
-
-
-
-
     </div>
 
-</body>
+    <script>
+        function validateForm() {
+            const name = document.getElementById('name').value;
+            const contact = document.getElementById('contact').value;
+            const email = document.getElementById('email').value;
+            const age = document.getElementById('age').value;
+            const gender = document.querySelector('input[name="gender"]:checked');
 
+            // Validate name (only letters and spaces)
+            const namePattern = /^[A-Za-z\s]+$/;
+            if (!namePattern.test(name)) {
+                alert("Name should only contain letters.");
+                return false;
+            }
+
+            // Validate contact (only numbers)
+            const contactPattern = /^[0-9]+$/;
+            if (!contactPattern.test(contact)) {
+                alert("Contact number should only contain numbers.");
+                return false;
+            }
+
+            // Validate email (browser handles basic email format check)
+            if (!email) {
+                alert("Please enter a valid email.");
+                return false;
+            }
+
+            // Validate age (should be a valid date)
+            if (!age) {
+                alert("Please enter your age.");
+                return false;
+            }
+
+            // Validate gender (one option must be selected)
+            if (!gender) {
+                alert("Please select your gender.");
+                return false;
+            }
+
+            return true; // Proceed with form submission if all validations pass
+        }
+    </script>
+</body>
 </html>
 
 {% endblock %}

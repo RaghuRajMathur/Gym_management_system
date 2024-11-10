@@ -3,16 +3,16 @@
 {% block main %}
 
 {% if error == "no" %}
-     <script>
-	   alert('Your Plan Added Successfully');
-	   window.location.href ="{% url 'viewPlan' %}";
-     </script>
+    <script>
+        alert('Your Plan Added Successfully');
+        window.location.href = "{% url 'viewPlan' %}";
+    </script>
 {% endif %}
 
 {% if error == "yes" %}
-     <script>
-	    alert('Something went wrong, Try Again');
-     </script>
+    <script>
+        alert('Something went wrong, Try Again');
+    </script>
 {% endif %}
 
 <!DOCTYPE html>
@@ -22,83 +22,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Plan</title>
-    <link rel="stylesheet" href="{% static 'css/add-style.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/add-style.css' %}">
 </head>
 
 <body>
     <div class="outer-box">
         <video autoplay loop muted plays-inline class="back-video">
-            <source src="static/images/bgvideo2.mp4">
+            <source src="{% static 'images/bgvideo2.mp4' %}">
         </video>
         <div class="inner-box">
             <header class="header">
                 <h1>Add Plan</h1>
             </header>
             <main class="form-body">
-                <form>
+                <form method="POST" name="addPlanForm" onsubmit="return validatePlanForm()">
+                    {% csrf_token %}
                     <p>
                         <label for="name">Name</label>
-                        <input type="text" id="name" placeholder="Enter Your Name" required>
+                        <input type="text" id="name" name="name" placeholder="Enter Plan Name" required>
                     </p>
                     <p>
                         <label for="amount">Amount</label>
-                        <input type="number" id="amount" placeholder="Enter Amount" required>
+                        <input type="number" id="amount" name="amount" placeholder="Enter Amount" required>
                     </p>
                     <p>
                         <label for="duration">Duration</label>
-                        <input type="text" id="duration" placeholder="Enter The Duraton" required>
+                        <input type="text" id="duration" name="duration" placeholder="Enter The Duration" required>
                     </p>
                     <p>
                         <input type="submit" id="submit" value="Submit"><br>
                     </p>
                 </form>
-
-
             </main>
         </div>
     </div>
-    <body>
 
-<script src="{% static 'js1/core/jquery.min.js' %}"></script>
-<script src="{% static 'js1/core/popper.min.js' %}"></script>
-<script src="{% static 'js1/core/bootstrap.min.js' %}"></script>
-<script src="{% static 'js1/core/jquery.slimscroll.min.js' %}"></script>
-<script src="{% static 'js1/core/jquery.scrollLock.min.js' %}"></script>
-<script src="{% static 'js1/core/jquery.appear.min.js' %}"></script>
-<script src="{% static 'js1/core/jquery.countTo.min.js' %}"></script>
-<script src="{% static 'js1/core/js.cookie.min.js' %}"></script>
-<script src="{% static 'js1/codebase.js' %}"></script>
+    <script src="{% static 'js1/core/jquery.min.js' %}"></script>
+    <script src="{% static 'js1/core/popper.min.js' %}"></script>
+    <script src="{% static 'js1/core/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js1/core/jquery.slimscroll.min.js' %}"></script>
+    <script src="{% static 'js1/core/jquery.scrollLock.min.js' %}"></script>
+    <script src="{% static 'js1/core/jquery.appear.min.js' %}"></script>
+    <script src="{% static 'js1/core/jquery.countTo.min.js' %}"></script>
+    <script src="{% static 'js1/core/js.cookie.min.js' %}"></script>
+    <script src="{% static 'js1/codebase.js' %}"></script>
 
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-<script src="{% static 'js1/plugins/chartjs/Chart.bundle.min.js' %}"></script>
-<script src="{% static 'js1/pages/be_pages_dashboard.js' %}"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <script src="{% static 'js1/plugins/chartjs/Chart.bundle.min.js' %}"></script>
+    <script src="{% static 'js1/pages/be_pages_dashboard.js' %}"></script>
 
-<script>
-    function validatePlanForm() {
-        // Validate Plan Name (must not be empty)
-        let planName = document.forms["addPlanForm"]["name"].value;
-        if (planName.trim() === "") {
-            alert("Plan Name cannot be empty.");
-            return false;
+    <script>
+        function validatePlanForm() {
+            // Validate Name (should contain only letters and spaces)
+            const name = document.getElementById('name').value.trim();
+            const namePattern = /^[A-Za-z\s]+$/;
+            if (!namePattern.test(name)) {
+                alert("Name should only contain letters.");
+                return false;
+            }
+
+            // Validate Amount (must be a positive number)
+            const amount = document.getElementById('amount').value;
+            if (isNaN(amount) || amount <= 0) {
+                alert("Amount must be a positive number.");
+                return false;
+            }
+
+            // Validate Duration (must be a positive integer)
+            const duration = document.getElementById('duration').value;
+            if (isNaN(duration) || duration <= 0 || !Number.isInteger(Number(duration))) {
+                alert("Duration must be a positive integer.");
+                return false;
+            }
+
+            return true; // Return true if all validations pass
         }
+    </script>
 
-        // Validate Amount (must be a positive number)
-        let amount = document.forms["addPlanForm"]["amount"].value;
-        if (isNaN(amount) || amount <= 0) {
-            alert("Amount must be a positive number.");
-            return false;
-        }
-
-        // Validate Duration (must be a positive integer)
-        let duration = document.forms["addPlanForm"]["duration"].value;
-        if (isNaN(duration) || duration <= 0 || !Number.isInteger(Number(duration))) {
-            alert("Duration must be a positive integer.");
-            return false;
-        }
-
-        return true; // Return true if all validations pass
-    }
-</script>
-
+</body>
 </html>
 {% endblock %}

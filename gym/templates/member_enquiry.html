@@ -1,125 +1,98 @@
-<cd class="cd"></cd>{% load static %} {% if error == "no" %}
+{% load static %}
+
+{% if error == "no" %}
 <script>
   alert("Your Enquiry has been sent. Our team will contact you soon.");
   window.location.href = "{% url 'member_enquiry' %}";
 </script>
-{% endif %} {% if error == "yes" %}
+{% endif %}
+{% if error == "yes" %}
 <script>
   alert("Something went wrong, please try again.");
 </script>
 {% endif %}
 
-<html lang="en" dir="ltr">
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <title>Member Issue Form</title>
-    <link rel="stylesheet" href="{% static 'css/member_enq.css' %}" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
-      src="https://kit.fontawesome.com/332a215f17.js"
-      crossorigin="anonymous"
-    ></script>
+    <title>Member Enquiry</title>
+    <link rel="stylesheet" href="{% static 'css/member_enq.css' %}" />
+    <script src="https://kit.fontawesome.com/332a215f17.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <br /><br /><br />
-    <section>
-      <div class="container py-5">
-        <div class="card">
-          <div class="card-body">
-            <h1 class="font-weight-light text-center py-3">
-              <b>Member Enquiry</b>
-            </h1>
-            <div class="row">
-              <div class="col-lg-6 offset-lg-3 col-md-12 col-sm-12">
-                <form method="post" class="form-inner">
-                  {% csrf_token %}
-                  <div class="form-row">
-                    <div class="form-group col-lg-12 col-md-12 col-sm-12">
-                      <label>Full Name</label>
-                      <input
-                        type="text"
-                        name="name"
-                        class="form-control"
-                        placeholder="Full Name"
-                        required
-                      />
-                    </div>
+    <video autoplay muted loop playsinline class="background-video">
+      <source src="{% static 'images/mylivewallpapers-com-Hulk-Gym-4K.mp4' %}" type="video/mp4" />
+    </video>
 
-                    <div class="form-group col-lg-12 col-md-12 col-sm-12">
-                      <label>Contact Number</label>
-                      <input
-                        type="text"
-                        name="contact"
-                        class="form-control"
-                        placeholder="Contact Number"
-                        required
-                      />
-                    </div>
-
-                    <div class="form-group col-lg-12 col-md-12 col-sm-12">
-                      <label>Email ID</label>
-                      <input
-                        type="email"
-                        name="emailid"
-                        class="form-control"
-                        placeholder="Email ID"
-                        required
-                      />
-                    </div>
-
-                    <div class="form-group col-lg-12 col-md-12 col-sm-12">
-                      <label>Select Your Branch</label>
-                      <select name="branch" class="form-control" required>
-                        <option value="" disabled selected>
-                          Select Branch
-                        </option>
-                        <option value="Branch 1">Branch 1</option>
-                        <option value="Branch 2">Branch 2</option>
-                        <option value="Branch 3">Branch 3</option>
-                      </select>
-                    </div>
-
-                    <div class="form-group col-lg-12 col-md-12 col-sm-12">
-                      <label>Issue Related To</label>
-                      <select name="issue" class="form-control" required>
-                        <option value="" disabled selected>Select Issue</option>
-                        <option value="Member Plan">Member Plan</option>
-                        <option value="Equipments">Equipments</option>
-                        <option value="Gym Environment">Gym Environment</option>
-                        <option value="Lost Items">Lost Items</option>
-                        <option value="Others">Others</option>
-                      </select>
-                    </div>
-
-                    <div class="form-group col-lg-12 col-md-12 col-sm-12">
-                      <label>Message</label>
-                      <textarea
-                        name="message"
-                        class="form-control"
-                        placeholder="Describe the issue..."
-                        required
-                      ></textarea>
-                    </div>
-
-                    <div class="form-group col-lg-6 col-md-12 col-sm-12">
-                      <input
-                        type="submit"
-                        value="Submit"
-                        class="form-control btn"
-                      />
-                    </div>
-                    <div class="form-group col-lg-6 col-md-12 col-sm-12">
-                      <a href="{% url 'index' %}" class="form-control btn"
-                        >Back to Home</a
-                      >
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div class="wrapper">
+      <div class="title-text">
+        <h1 class="title">Member Enquiry</h1>
       </div>
-    </section>
+      <div class="form-container">
+        <form method="post" class="form-inner" onsubmit="return validateForm()">
+          {% csrf_token %}
+          <div class="field">
+            <input type="text" name="name" placeholder="Full Name" required />
+          </div>
+          <div class="field">
+            <input type="text" name="contact" placeholder="Contact Number" required />
+          </div>
+          <div class="field">
+            <input type="email" name="emailid" placeholder="Email ID" required />
+          </div>
+          <div class="field">
+            <select name="branch" required>
+              <option value="" disabled selected>Select Branch</option>
+              <option value="Branch 1">Branch 1</option>
+              <option value="Branch 2">Branch 2</option>
+              <option value="Branch 3">Branch 3</option>
+            </select>
+          </div>
+          <div class="field">
+            <select name="issue" required>
+              <option value="" disabled selected>Select Issue</option>
+              <option value="Member Plan">Member Plan</option>
+              <option value="Equipments">Equipments</option>
+              <option value="Gym Environment">Gym Environment</option>
+              <option value="Lost Items">Lost Items</option>
+              <option value="Others">Others</option>
+            </select>
+          </div>
+          <div class="field">
+            <textarea name="message" placeholder="Describe the issue..." required></textarea>
+          </div>
+          <div class="field btn">
+            <input type="submit" value="Submit" />
+          </div>
+          <div class="field btn back-to-home">
+            <a href="{% url 'index' %}">Back to Home</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      function validateForm() {
+        const name = document.querySelector('input[name="name"]').value;
+        const contact = document.querySelector('input[name="contact"]').value;
+
+        // Validate name to only contain letters
+        const namePattern = /^[A-Za-z\s]+$/;
+        if (!namePattern.test(name)) {
+          alert("Name should only contain letters.");
+          return false;
+        }
+
+        // Validate contact to only contain numbers
+        const contactPattern = /^[0-9]+$/;
+        if (!contactPattern.test(contact)) {
+          alert("Contact number should only contain numbers.");
+          return false;
+        }
+
+        return true; // Proceed with form submission if validation passes
+      }
+    </script>
   </body>
 </html>

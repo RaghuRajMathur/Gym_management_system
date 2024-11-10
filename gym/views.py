@@ -8,10 +8,9 @@ from .utils import send_enquiry_email, generate_random_password, send_member_cre
 from django.http import HttpResponse, JsonResponse
 import random
 from django.contrib import messages
-from django.core.paginator import Paginator
 
 # Create your views here.
-
+openai.api_key = ""
 
 def index(request):
     return render(request, "index.html")
@@ -123,26 +122,31 @@ def member_enquiry(request):
 
 def addEnquiry(request):
     if not request.user.is_authenticated:
-        return redirect(admin_login)
+        return redirect('admin_login')  # Replace with your actual login view name
+    
     error = ""
     if request.method == "POST":
-        n = request.POST["name"]
-        m = request.POST["mobile"]
-        e = request.POST["email"]
-        a = request.POST["age"]
-        g = request.POST["gender"]
+        # Get form data
+        n = request.POST.get("name")
+        m = request.POST.get("mobile")
+        e = request.POST.get("email")
+        a = request.POST.get("age")
+        g = request.POST.get("gender")
+        
         try:
+            # Create new enquiry entry
             Enquiry.objects.create(name=n, mobile=m, email=e, age=a, gender=g)
-            error = "no"
-        except:
-            error = "yes"
-    return render(request, "add_enquiry.html", locals())
+            error = "no"  # Successfully saved
+        except Exception as e:
+            print(f"Error: {e}")  # Log the error to the console for debugging
+            error = "yes"  # Something went wrong
 
+    # Render the template and pass the error variable
+    return render(request, "add_enquiry.html", {'error': error})
 
 def viewEnquiry(request):
-    if not request.user.is_authenticated:
-        return redirect(admin_login)
-    enquiry = Enquiry.objects.all()
+    # Fetch all enquiry entries from the database
+    enquiries = Enquiry.objects.all()  # You can add filters if needed
     return render(request, "viewEnquiry.html", locals())
 
 
@@ -178,9 +182,13 @@ def delete_Enquiry(request, pid):
     return redirect("viewEnquiry")
 
 
+from django.shortcuts import render, redirect
+from .models import Plan
+
 def addPlan(request):
     if not request.user.is_authenticated:
-        return redirect(admin_login)
+        return redirect('admin_login')  # Ensure 'admin_login' is a valid URL pattern
+
     error = ""
     if request.method == "POST":
         p = request.POST["name"]
@@ -188,17 +196,19 @@ def addPlan(request):
         d = request.POST["duration"]
         try:
             Plan.objects.create(name=p, amount=a, duration=d)
-            error = "no"
-        except:
+            return redirect('viewPlan')  # Redirect to the viewPlan page after successful addition
+        except Exception as e:
             error = "yes"
-    return render(request, "addPlan.html", locals())
+            print(f"Error: {e}")  # Log the error for debugging purposes
+
+    return render(request, "addPlan.html", {"error": error})
 
 
 def viewPlan(request):
     if not request.user.is_authenticated:
-        return redirect(admin_login)
-    plan = Plan.objects.all()
-    return render(request, "viewPlan.html", locals())
+        return redirect('admin_login')  # Make sure 'admin_login' is a valid URL pattern
+    plans = Plan.objects.all()  # Fetch all plan records from the database
+    return render(request, "viewPlan.html", {'plans': plans}) 
 
 
 def edit_Plan(request, pid):
@@ -253,8 +263,9 @@ def addEquipment(request):
 def viewEquipment(request):
     if not request.user.is_authenticated:
         return redirect(admin_login)
-    equipment = Equipment.objects.all()
-    return render(request, "viewEquipment.html", locals())
+    equipment_list = Equipment.objects.all()  # Retrieve all equipment records
+    return render(request, "viewEquipment.html", {"equipment_list": equipment_list})
+
 
 
 def edit_Equipment(request, pid):
@@ -345,9 +356,6 @@ def addMember(request):
 
     d = {"error": error, "plan": plan1}
     return render(request, "addMember.html", d)
-
-
-from .models import Member  # Adjust this import if Member is in another app
 
 
 # Member login view
@@ -530,3 +538,40 @@ def getMessages(request, room):
     # Reverse the list to show the oldest message at the top
     messages.reverse()
     return JsonResponse({"messages": messages})
+
+
+def generate_diet_plan(height, weight, sex, age, activity_level):
+    # AI-based logic for generating personalized diet plan
+    # Construct the prompt for GPT-3/ChatGPT
+    prompt = f"Generate a personalized diet plan for a {age}-year-old {sex} who is {height} cm tall, weighs {weight} kg, and has a {activity_level} activity level."
+
+    try:
+        # Use OpenAI's new ChatCompletion API to generate the diet plan
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",  # You can change to another model if needed
+            messages=[{"role": "user", "content": prompt}],
+            max_tokens=150,
+            temperature=0.7,
+        )
+
+        # Extract the diet plan from the response
+        diet_plan = response['choices'][0]['message']['content'].strip()
+        return diet_plan
+    except Exception as e:
+        return f"Error generating diet plan: {e}"
+    
+def personalized_diet_plan(request):
+    diet_plan = None
+    if request.method == "POST":
+        height = request.POST.get('height')
+        weight = request.POST.get('weight')
+        sex = request.POST.get('sex')
+        age = request.POST.get('age')
+        activity_level = request.POST.get('activity_level')
+
+        # Validate input (add more validations as necessary)
+        if height and weight and sex:   
+            # Call the AI function to generate the diet plan
+            diet_plan = generate_diet_plan(height, weight, sex, age, activity_level)
+
+    return render(request, 'personalized_diet_plan.html', locals())
