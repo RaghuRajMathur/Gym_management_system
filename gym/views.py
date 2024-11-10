@@ -8,7 +8,9 @@ from .utils import send_enquiry_email, generate_random_password, send_member_cre
 from django.http import HttpResponse, JsonResponse
 import random
 from django.contrib import messages
-
+from .models import Member
+from django.core.paginator import Paginator
+import openai
 # Create your views here.
 openai.api_key = ""
 
@@ -33,6 +35,9 @@ def admin_login(request):
             return render(request, "failure.html")
     return render(request, "login_admin.html", locals())
 
+def failure(request):
+    return render(request, "failure.html")
+
 
 def admin_home(request):
     if not request.user.is_staff:
@@ -48,9 +53,6 @@ def admin_home(request):
 
 def member_home(request):
     return render(request, "member_home.html")
-
-def failure(request):
-    return render(request, "failure.html")
 
 
 def contact(request):
