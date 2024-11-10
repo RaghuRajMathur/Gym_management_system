@@ -1,10 +1,13 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from .models import *
 from django.contrib.auth import authenticate, logout, login
 from datetime import date
 from django.db.models import Q
-from .utils import send_enquiry_email
+from .utils import send_enquiry_email, generate_random_password, send_member_credentials
+from django.http import HttpResponse, JsonResponse
+import random
+from django.contrib import messages
 
 # Create your views here.
 
@@ -40,6 +43,10 @@ def admin_home(request):
 
     d = {"en": en, "eq": eq, "p": p, "m": m}
     return render(request, "admin_home.html", d)
+
+
+def member_home(request):
+    return render(request, "member_home.html")
 
 
 def contact(request):
@@ -124,7 +131,8 @@ def addEnquiry(request):
             error = "no"
         except:
             error = "yes"
-    return render(request,'add_enquiry.html', locals())
+    return render(request, "add_enquiry.html", locals())
+
 
 def viewEnquiry(request):
     if not request.user.is_authenticated:
@@ -274,11 +282,22 @@ def delete_Equipment(request, pid):
     return redirect("viewEquipment")
 
 
+import random
+
+
 def addMember(request):
     if not request.user.is_authenticated:
         return redirect(admin_login)
     error = ""
     plan1 = Plan.objects.all()
+
+    # Define room groups based on plans
+    room_groups = {
+        "Golden Plan": ["GymSync GP 1", "GymSync GP 2", "GymSync GP 3"],
+        "Silver Plan": ["GymSync SP 1", "GymSync SP 2", "GymSync SP 3"],
+        "Silver Plan Double": ["GymSync SPD 1", "GymSync SPD 2", "GymSync SPD 3"],
+    }
+
     if request.method == "POST":
         n = request.POST["name"]
         c = request.POST["contact"]
@@ -287,41 +306,62 @@ def addMember(request):
         p = request.POST["plan"]
         j = request.POST["joindate"]
         i = request.POST["initamount"]
+
+        # Retrieve the plan object
         plan = Plan.objects.get(name=p)
+
+        # Generate a unique random password
+        password = generate_random_password()
+
+        room_names = room_groups.get(plan.name)
+        chatroom_name = random.choice(room_names) if room_names else None
+
         try:
-            Member.objects.create(
+            member = Member.objects.create(
                 name=n,
                 contact=c,
                 email=e,
+                password=password,
                 gender=g,
                 plan=plan,
                 joindate=j,
                 initamount=i,
+                chatroom_id=chatroom_name,  # Assign chatroom name directly
             )
+
+            # Send an email with the credentials
+            send_member_credentials(e, n, chatroom_name, plan.name, password)
+
             error = "no"
-        except:
+        except Exception as ex:
+            print("Error adding member:", ex)
             error = "yes"
+
     d = {"error": error, "plan": plan1}
     return render(request, "addMember.html", d)
 
+
 from .models import Member  # Adjust this import if Member is in another app
 
+
+# Member login view
 def member_login(request):
     error = ""
     if request.method == "POST":
         username = request.POST.get("uname")
         password = request.POST.get("pwd")
-        
-        # Authenticate the member using username and password
-        user = authenticate(username=username, password=password)
-        
-        if user is not None:
-            login(request, user)
+
+        try:
+            member = Member.objects.get(name=username, password=password)
+            request.session["member_id"] = (
+                member.id
+            )  # Store member id in session for logged-in user
             error = "no"  # Login successful
-        else:
+        except Member.DoesNotExist:
             error = "yes"  # Login failed, incorrect credentials
 
     return render(request, "member_login.html", {"error": error})
+
 
 def viewMember(request):
     if not request.user.is_authenticated:
@@ -419,7 +459,7 @@ def changePassword(request):
 def member_queries(request):
     # Fetch all member queries from the database
     queries = MemberEnquiry.objects.all()
-    
+
     # Render the queries to a template
     return render(request, "member_queries.html", {"queries": queries})
 
@@ -427,3 +467,57 @@ def member_queries(request):
 def Logout(request):
     logout(request)
     return redirect("index")
+
+
+# Chat Room Views:
+def home(request):
+    return render(request, "home.html")
+
+
+def room(request, room):
+    username = request.GET.get("username")
+    room_details = get_object_or_404(
+        Room, name=room
+    )  # This will return a 404 page if the room doesn't exist
+    return render(
+        request,
+        "room.html",
+        {"username": username, "room": room, "room_details": room_details},
+    )
+
+
+def checkview(request):
+    room_name = request.POST["room_name"]
+    username = request.POST["username"]
+    password = request.POST["password"]
+
+    # Fetch the member based on username, password, and room
+    try:
+        member = Member.objects.get(
+            name=username, password=password, chatroom_id=room_name
+        )
+        # Redirect to the room if the details match
+        return redirect(f"/{room_name}/?username={username}")
+    except Member.DoesNotExist:
+        # If details don't match, show an error message on the home page
+        messages.error(
+            request, "Invalid room name, username, or password. Please try again."
+        )
+        return redirect("home")
+
+
+def send(request):
+    message = request.POST["message"]
+    username = request.POST["username"]
+    room_id = request.POST["room_id"]
+
+    new_message = Message.objects.create(value=message, user=username, room=room_id)
+    new_message.save()
+    return HttpResponse("Message sent successfully")
+
+
+def getMessages(request, room):
+    room_details = Room.objects.get(name=room)
+
+    messages = Message.objects.filter(room=room_details.id)
+    return JsonResponse({"messages": list(messages.values())})

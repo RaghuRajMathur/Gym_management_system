@@ -1,0 +1,117 @@
+{% include 'navbar.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{% static 'css/member_home_style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="heading"><span class="admin">Member Services</span></h1>
+<div class="card-container">
+<div class="card">
+    <!-- Updated Image Section -->
+   <div class="card__img">
+    <a href="{% url 'viewEnquiry' %}">
+      <i class="fa-solid fa-book-open-reader icon"></i>
+    </a>
+</div>
+    <div class="card__subtitle">Gym Sync</div>
+    <div class="card__wrapper">
+        <div class="card__title">ENQUIRIES</div>
+        <a href="{% url 'viewEnquiry' %}">
+        <div class="card__icon">
+            <svg color="rgb(224, 223, 220)" style="user-select: none; width: 100%; height: 100%; display: inline-block; fill: rgb(224, 223, 220); flex-shrink: 0; cursor: auto;" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                <g color="rgb(224, 223, 220)">
+                    <circle opacity="0.2" r="96" cy="128" cx="128"></circle>
+                    <circle stroke-width="16" stroke-miterlimit="10" stroke="rgb(224, 223, 220)" fill="none" r="96" cy="128" cx="128"></circle>
+                    <polyline stroke-width="16" stroke-linejoin="round" stroke-linecap="round" stroke="rgb(224, 223, 220)" fill="none" points="134.1 161.9 168 128 134.1 94.1"></polyline>
+                    <line stroke-width="16" stroke-linejoin="round" stroke-linecap="round" stroke="rgb(224, 223, 220)" fill="none" y2="128" x2="168" y1="128" x1="88"></line>
+                </g>
+            </svg>
+        </div>
+      </a>
+    </div>
+</div>
+<div class="card">
+  <!-- Updated Image Section -->
+ <div class="card__img">
+  <a href="{% url 'viewPlan' %}">
+      
+    <i class="fa-solid fa-book icon"></i>
+  </a>
+</div>
+  <div class="card__subtitle">Gym Sync</div>
+  <div class="card__wrapper">
+      <div class="card__title">PLANS</div>
+      <a href="{% url 'viewPlan' %}">
+      <div class="card__icon">
+          <svg color="rgb(224, 223, 220)" style="user-select: none; width: 100%; height: 100%; display: inline-block; fill: rgb(224, 223, 220); flex-shrink: 0; cursor: auto;" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+              <g color="rgb(224, 223, 220)">
+                  <circle opacity="0.2" r="96" cy="128" cx="128"></circle>
+                  <circle stroke-width="16" stroke-miterlimit="10" stroke="rgb(224, 223, 220)" fill="none" r="96" cy="128" cx="128"></circle>
+                  <polyline stroke-width="16" stroke-linejoin="round" stroke-linecap="round" stroke="rgb(224, 223, 220)" fill="none" points="134.1 161.9 168 128 134.1 94.1"></polyline>
+                  <line stroke-width="16" stroke-linejoin="round" stroke-linecap="round" stroke="rgb(224, 223, 220)" fill="none" y2="128" x2="168" y1="128" x1="88"></line>
+              </g>
+          </svg>
+      </div>
+    </a>
+  </div>
+</div>
+</div>
+<div class="card-container">
+  <div class="card">
+      <!-- Updated Image Section -->
+     <div class="card__img">
+      <a href="{% url 'viewEquipment' %}">
+        <i class="fa-solid fa-dumbbell icon"></i>
+      </a>
+  </div>
+      <div class="card__subtitle">Gym Sync</div>
+      <div class="card__wrapper">
+          <div class="card__title">EQUIPMENTS</div>
+          <a href="{% url 'viewEquipment' %}">
+          <div class="card__icon">
+              <svg color="rgb(224, 223, 220)" style="user-select: none; width: 100%; height: 100%; display: inline-block; fill: rgb(224, 223, 220); flex-shrink: 0; cursor: auto;" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                  <g color="rgb(224, 223, 220)">
+                      <circle opacity="0.2" r="96" cy="128" cx="128"></circle>
+                      <circle stroke-width="16" stroke-miterlimit="10" stroke="rgb(224, 223, 220)" fill="none" r="96" cy="128" cx="128"></circle>
+                      <polyline stroke-width="16" stroke-linejoin="round" stroke-linecap="round" stroke="rgb(224, 223, 220)" fill="none" points="134.1 161.9 168 128 134.1 94.1"></polyline>
+                      <line stroke-width="16" stroke-linejoin="round" stroke-linecap="round" stroke="rgb(224, 223, 220)" fill="none" y2="128" x2="168" y1="128" x1="88"></line>
+                  </g>
+              </svg>
+          </div>
+        </a>
+      </div>
+  </div>
+  <div class="card">
+    <!-- Updated Image Section -->
+   <div class="card__img">
+    <a href="{% url 'viewMember' %}">
+      <i class="fa-solid fa-people-group icon"></i>
+    </a>
+  </div>
+    <div class="card__subtitle">Gym Sync</div>
+    <div class="card__wrapper">
+        <div class="card__title">MEMBERS</div>
+        <a href="{% url 'viewMember' %}">
+        <div class="card__icon">
+            <svg color="rgb(224, 223, 220)" style="user-select: none; width: 100%; height: 100%; display: inline-block; fill: rgb(224, 223, 220); flex-shrink: 0; cursor: auto;" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                <g color="rgb(224, 223, 220)">
+                    <circle opacity="0.2" r="96" cy="128" cx="128"></circle>
+                    <circle stroke-width="16" stroke-miterlimit="10" stroke="rgb(224, 223, 220)" fill="none" r="96" cy="128" cx="128"></circle>
+                    <polyline stroke-width="16" stroke-linejoin="round" stroke-linecap="round" stroke="rgb(224, 223, 220)" fill="none" points="134.1 161.9 168 128 134.1 94.1"></polyline>
+                    <line stroke-width="16" stroke-linejoin="round" stroke-linecap="round" stroke="rgb(224, 223, 220)" fill="none" y2="128" x2="168" y1="128" x1="88"></line>
+                </g>
+            </svg>
+        </div>
+      </a>
+    </div>
+  </div>
+  </div>
+  <div style="margin-top: 90px;"></div>
+</body>
+</html>

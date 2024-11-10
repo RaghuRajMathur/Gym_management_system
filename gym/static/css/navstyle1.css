@@ -98,9 +98,15 @@ nav li:first-child {
     width: 100%;
 }
 
+.sidebar li:hover{
+    background-color: #F7EF8A;
+    color: rgba(31, 36, 45, 0.8);
+}
+
 .sidebar a {
     width: 100%;
     color: #F7EF8A;
+    text-decoration: none;
 }
 
 nav svg {
