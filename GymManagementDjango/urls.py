@@ -19,8 +19,10 @@ from django.urls import path
 from gym.views import *
 from django.conf import settings
 from gym import views
+from django.conf.urls import handler404
 
 
+handler404 = 'gym.views.custom_404_view'
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", index, name="index"),

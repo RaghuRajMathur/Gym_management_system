@@ -56,7 +56,7 @@ var myObject = new Vue({
             { img: 'https://livedemo00.template-help.com/wt_62267_v8/prod-20823-one-service/images/testimonials-03-179x179.png' }
         ],
         testimonials: [
-            { quote: 'GymSync has completely transformed my fitness journey! The personalized training plans and real-time communication with my trainer have helped me stay on track and achieve goals I never thought possible.', name: 'peter lee' },
+            { quote: 'GymSync web has completely transformed my fitness journey! The personalized training plans and real-time communication with my trainer have helped me stay on track and achieve goals I never thought possible.', name: 'peter lee' },
             { quote: 'The trainers at GymSync are fantastic! Their expertise and the focus on core strength have made a huge difference in my performance. The positive environment keeps me motivated every day!', name: 'john doe' },
             { quote: 'I love how GymSync integrates everything I need—personalized workout plans, easy communication with my trainer, and real-time equipment availability. Its the most efficient and motivating gym experience I ever had!', name: 'sarah smith' }
         ],
