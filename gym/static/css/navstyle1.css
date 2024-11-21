@@ -101,6 +101,7 @@ nav li:first-child {
 .sidebar li:hover{
     background-color: #F7EF8A;
     color: rgba(31, 36, 45, 0.8);
+    font-weight: bold;
 }
 
 .sidebar a {

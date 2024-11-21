@@ -146,6 +146,7 @@
         }
 
         .heading{
+            font-size: 2rem;
             display: flex;
             align-items: center;
             color: #F7EF8A;
