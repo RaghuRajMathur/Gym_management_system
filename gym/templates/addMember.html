@@ -8,6 +8,11 @@
 	   window.location.href ="{% url 'viewMember' %}";
      </script>
 {% endif %}
+{% if error == "email_exists" %}
+<script>
+    alert('This email already exists. Please use a different one.');
+ </script>
+{% endif %}
 
 {% if error == "yes" %}
      <script>

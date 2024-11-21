@@ -69,7 +69,7 @@ class Trainer(models.Model):
 class Member(models.Model):
     name = models.CharField(max_length=150, null=True)
     contact = models.CharField(max_length=15, null=True)
-    email = models.CharField(max_length=50, null=True)
+    email = models.CharField(max_length=50, unique=True, null=True)
     password = models.CharField(max_length=100, default="default_password")
     gender = models.CharField(max_length=10, null=True)
     plan = models.CharField(max_length=100, null=True)
