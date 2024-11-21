@@ -11,14 +11,18 @@ from django.contrib import messages
 from .models import Member
 from django.core.paginator import Paginator
 import openai
+
 # Create your views here.
 openai.api_key = ""
+
 
 def index(request):
     return render(request, "index.html")
 
+
 def custom_404_view(request, exception):
-    return render(request, '404.html', status=404)
+    return render(request, "404.html", status=404)
+
 
 def admin_login(request):
     error = ""
@@ -36,6 +40,7 @@ def admin_login(request):
             error = "yes"
             return render(request, "failure.html")
     return render(request, "login_admin.html", locals())
+
 
 def failure(request):
     return render(request, "failure.html")
@@ -126,8 +131,8 @@ def member_enquiry(request):
 
 def addEnquiry(request):
     if not request.user.is_authenticated:
-        return redirect('admin_login')  # Replace with your actual login view name
-    
+        return redirect("admin_login")  # Replace with your actual login view name
+
     error = ""
     if request.method == "POST":
         # Get form data
@@ -136,7 +141,7 @@ def addEnquiry(request):
         e = request.POST.get("email")
         a = request.POST.get("age")
         g = request.POST.get("gender")
-        
+
         try:
             # Create new enquiry entry
             Enquiry.objects.create(name=n, mobile=m, email=e, age=a, gender=g)
@@ -146,7 +151,8 @@ def addEnquiry(request):
             error = "yes"  # Something went wrong
 
     # Render the template and pass the error variable
-    return render(request, "add_enquiry.html", {'error': error})
+    return render(request, "add_enquiry.html", {"error": error})
+
 
 def viewEnquiry(request):
     # Fetch all enquiry entries from the database
@@ -189,9 +195,10 @@ def delete_Enquiry(request, pid):
 from django.shortcuts import render, redirect
 from .models import Plan
 
+
 def addPlan(request):
     if not request.user.is_authenticated:
-        return redirect('admin_login')  # Ensure 'admin_login' is a valid URL pattern
+        return redirect("admin_login")  # Ensure 'admin_login' is a valid URL pattern
 
     error = ""
     if request.method == "POST":
@@ -200,7 +207,9 @@ def addPlan(request):
         d = request.POST["duration"]
         try:
             Plan.objects.create(name=p, amount=a, duration=d)
-            return redirect('viewPlan')  # Redirect to the viewPlan page after successful addition
+            return redirect(
+                "viewPlan"
+            )  # Redirect to the viewPlan page after successful addition
         except Exception as e:
             error = "yes"
             print(f"Error: {e}")  # Log the error for debugging purposes
@@ -210,9 +219,9 @@ def addPlan(request):
 
 def viewPlan(request):
     if not request.user.is_authenticated:
-        return redirect('admin_login')  # Make sure 'admin_login' is a valid URL pattern
+        return redirect("admin_login")  # Make sure 'admin_login' is a valid URL pattern
     plans = Plan.objects.all()  # Fetch all plan records from the database
-    return render(request, "viewPlan.html", {'plans': plans}) 
+    return render(request, "viewPlan.html", {"plans": plans})
 
 
 def edit_Plan(request, pid):
@@ -269,7 +278,6 @@ def viewEquipment(request):
         return redirect(admin_login)
     equipment_list = Equipment.objects.all()  # Retrieve all equipment records
     return render(request, "viewEquipment.html", {"equipment_list": equipment_list})
-
 
 
 def edit_Equipment(request, pid):
@@ -337,22 +345,27 @@ def addMember(request):
         chatroom_name = random.choice(room_names) if room_names else None
 
         try:
-            member = Member.objects.create(
-                name=n,
-                contact=c,
-                email=e,
-                password=password,
-                gender=g,
-                plan=plan,
-                joindate=j,
-                initamount=i,
-                chatroom_id=chatroom_name,  # Assign chatroom name directly
-            )
+            # Check if email already exists
+            if Member.objects.filter(email=e).exists():
+                error = "email_exists"
+            else:
+                # Create the member
+                member = Member.objects.create(
+                    name=n,
+                    contact=c,
+                    email=e,
+                    password=password,
+                    gender=g,
+                    plan=plan,
+                    joindate=j,
+                    initamount=i,
+                    chatroom_id=chatroom_name,  # Assign chatroom name directly
+                )
 
-            # Send an email with the credentials
-            send_member_credentials(e, n, chatroom_name, plan.name, password)
+                # Send an email with the credentials
+                send_member_credentials(e, n, chatroom_name, plan.name, password)
 
-            error = "no"
+                error = "no"
         except Exception as ex:
             print("Error adding member:", ex)
             error = "yes"
@@ -538,7 +551,9 @@ def send(request):
 def getMessages(request, room):
     room_details = Room.objects.get(name=room)
     # Get the latest 5 messages in descending order and convert to a list of dictionaries
-    messages = list(Message.objects.filter(room=room_details.id).order_by('-date').values()[:5])
+    messages = list(
+        Message.objects.filter(room=room_details.id).order_by("-date").values()[:5]
+    )
     # Reverse the list to show the oldest message at the top
     messages.reverse()
     return JsonResponse({"messages": messages})
@@ -559,23 +574,24 @@ def generate_diet_plan(height, weight, sex, age, activity_level):
         )
 
         # Extract the diet plan from the response
-        diet_plan = response['choices'][0]['message']['content'].strip()
+        diet_plan = response["choices"][0]["message"]["content"].strip()
         return diet_plan
     except Exception as e:
         return f"Error generating diet plan: {e}"
-    
+
+
 def personalized_diet_plan(request):
     diet_plan = None
     if request.method == "POST":
-        height = request.POST.get('height')
-        weight = request.POST.get('weight')
-        sex = request.POST.get('sex')
-        age = request.POST.get('age')
-        activity_level = request.POST.get('activity_level')
+        height = request.POST.get("height")
+        weight = request.POST.get("weight")
+        sex = request.POST.get("sex")
+        age = request.POST.get("age")
+        activity_level = request.POST.get("activity_level")
 
         # Validate input (add more validations as necessary)
-        if height and weight and sex:   
+        if height and weight and sex:
             # Call the AI function to generate the diet plan
             diet_plan = generate_diet_plan(height, weight, sex, age, activity_level)
 
-    return render(request, 'personalized_diet_plan.html', locals())
+    return render(request, "personalized_diet_plan.html", locals())
