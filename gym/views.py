@@ -17,6 +17,8 @@ openai.api_key = ""
 def index(request):
     return render(request, "index.html")
 
+def custom_404_view(request, exception):
+    return render(request, '404.html', status=404)
 
 def admin_login(request):
     error = ""
