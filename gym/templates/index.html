@@ -8,6 +8,7 @@
   <script src="{% static 'script/ourclasses_script.js' %}" defer></script>
   <script src="{% static 'script/vuesp.js' %}" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,6 +18,7 @@
     <link rel="stylesheet" href="{% static 'css/featurestyle.css' %}" />
     <link rel="stylesheet" href="{% static 'css/class_style.css' %}" />
     <link rel="stylesheet" href="{% static 'css/testimonial_style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/blogstyle.css' %}" />
   </head>
   <body>
       <!----Hero Image-->
@@ -40,7 +42,7 @@
         <!--About Info============-->
         <article class="about-info">
           <div>
-            <h2>Welcome to Gravity health Club</h2>
+            <h2>Welcome to GymSync</h2>
             <p class="abt-text">
               GymSync is a cutting-edge gym management platform designed to enhance the fitness experience for gym owners, trainers, and members. Our platform integrates real-time equipment monitoring, personalized fitness and diet plans, and dynamic support features, allowing seamless communication between members and trainers.
             </p>
@@ -64,56 +66,7 @@
     </section>
     <!--End of About Section====================-->
 
-    <!--==============Work out section=====================-->
-    <!-- <section id="workout">
-      <div class="section-center">
-        
-        <div class="work-title">
-          <h3 class="title">Why Work Out here</h3>
-        </div>
-        
-        <div class="work-center">
-          
-          <article class="service">
-            <i class="fas fa-bolt"></i>
-            <h3>All Trainer Good</h3>
-            <p>“All Trainer and good behaviour wise helping all Time.”</p>
-          </article>
-         
-          
-          <article class="service">
-            <i class="fas fa-leaf"></i>
-            <h3>Good training</h3>
-            <p>
-              “Here all Equipment are good. Gym owner are also good person, good
-              trainer.”
-            </p>
-          </article>
-         
-          
-          <article class="service">
-            <i class="fas fa-battery-three-quarters"></i>
-            <h3>Core Strength</h3>
-            <p>
-              “Strength does not come from physical capacity. It comes from an
-              indomitable will.”
-            </p>
-          </article>
-         
-          
-          <article class="service">
-            <i class="fas fa-smile-beam"></i>
-            <h3>Positivity</h3>
-            <p>
-              “Actually, I just woke up one day and decided I didn’t want to
-              feel…”
-            </p>
-          </article>
-         
-        </div>
-      </div>
-    </section> -->
-
+   
     <div id="featureapp">
       <div class="our-features">
         <p class="feature-title" ref="featureTitle">WHY CHOOSE US?</p>
@@ -266,49 +219,6 @@
   </div>
   </div>
 
-    <!--=========End of Work out Section===============-->
-    <!--=========Testimonial  Section===============-->
-    <!-- <section id="testimonial">
-      <div class="section-center">
-        
-        <div>
-          <h3 class="title">Happy Clients</h3>
-        </div>
-        
-        <div class="client-center">
-          
-          <article class="testimonial">
-            <h3>Shivam Sharma</h3>
-            <p>
-              “Their trainers are exceptional, the overall vibe is great and I
-              have had nothing but good experiences. I definitely recommend them
-              to my friends and family...”
-            </p>
-          </article>
-         
-          
-          <article class="testimonial">
-            <h3>Raghuraj Mathur</h3>
-            <p>
-              “Amazing personal trainers and complete, clean gym. Would highly
-              recommend!..”
-            </p>
-          </article>
-         
-          
-          <article class="testimonial">
-            <h3>Kartik Tanwar</h3>
-            <p>
-              “Trainers who really care and go above and beyond to help you
-              achieve your goals. Small and private gym that feels more
-              personal...”
-            </p>
-          </article>
-         
-        </div>
-      </div>
-    </section> -->
-
     <div id="testimonialApp">
       <section class="testimonial">
         <div class="container">
@@ -400,54 +310,14 @@
     </div>
   </div>
 
-    <!-- <section id="classes">
-      <div class="section-center">
-        
-        <div>
-          <h3 class="title">Our Classes</h3>
-        </div>
-        
-        <div class="classes-container">
-          
-          <article class="class-item">
-            
-            <div class="img-container">
-              <img src="{% static 'images/gym5.jpg' %}" alt="class1" />
-            </div>
-            <div class="text-container">
-              <h4>Weights</h4>
-            </div>
-           
-          </article>
-          
-          
-          <article class="class-item">
-           
-            <div class="img-container">
-              <img src="{% static 'images/Crossfit.jpg' %}" alt="class1" />
-            </div>
-            <div class="text-container">
-              <h4>Crossfit</h4>
-            </div>
-           
-          </article>
-          
-          
-          <article class="class-item">
-           
-            <div class="img-container">
-              <img src="{% static 'images/Pilates.jpg' %}" alt="class1" />
-            </div>
-            <div class="text-container">
-              <h4>Pilates</h4>
-            </div>
-           
-          </article>
-          
-        </div>
-      </div>
-    </section> -->
-    <!--==============End of Classes Section===========-->
+  <!-- Blogs -->
+  <div class="blog-section">
+    <h2 class="blog-head">Announcements</h2>
+    <div class="row" id="blog-cards-container">
+        <!-- Latest blogs -->
+    </div>
+    <a href="{% url 'all_blogs' %}" class="btn">View More</a>
+</div>
 
     <!---Footer===========-->
     <footer></footer>
@@ -496,6 +366,37 @@
                     }
                 }
             }
+        });
+        $(document).ready(function() {
+            $.ajax({
+                url: "{% url 'latest_blogs_ajax' %}",  // AJAX URL
+                method: "GET",
+                success: function(response) {
+                    var blogs = response.latest_blogs;
+                    var container = $('#blog-cards-container');
+                    
+                    container.empty();
+                  
+                    blogs.forEach(function(blog) {
+                        var blogCard = `
+                            <div class="col-6 blog-card">
+                                <div class="card">
+                                    <img src="${blog.image_url}" class="card-img-top" alt="${blog.title}" style="width: 100%; height: auto;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${blog.title}</h5>
+                                        <p class="card-text">${blog.content}...</p>
+                                        <a href="/blog_detail/${blog.blog_id}" class="btn btn-primary">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        container.append(blogCard);  // Append the blog card to the container
+                    });
+                },
+                error: function() {
+                    alert("Failed to fetch latest blogs.");
+                }
+            });
         });
 </script>
   </body>

@@ -20,9 +20,10 @@ from gym.views import *
 from django.conf import settings
 from gym import views
 from django.conf.urls import handler404
+from django.conf.urls.static import static
 
 
-handler404 = 'gym.views.custom_404_view'
+handler404 = "gym.views.custom_404_view"
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", index, name="index"),
@@ -30,7 +31,11 @@ urlpatterns = [
     path("contact", contact, name="contact"),
     path("member_enquiry/", member_enquiry, name="member_enquiry"),  # Add this line
     path("member-queries/", views.member_queries, name="member_queries"),
-    path('personalized_diet_plan/', views.personalized_diet_plan, name='personalized_diet_plan'),
+    path(
+        "personalized_diet_plan/",
+        views.personalized_diet_plan,
+        name="personalized_diet_plan",
+    ),
     path("admin_home", admin_home, name="admin_home"),
     path("member_home", member_home, name="member_home"),
     path("failure", failure, name="failure"),
@@ -58,10 +63,16 @@ urlpatterns = [
     path("delete_contact/<int:pid>", delete_contact, name="delete_contact"),
     path("changePassword", changePassword, name="changePassword"),
     path("logout", Logout, name="logout"),
+    path("blog_section/", views.blog_section, name="blog_section"),
+    path("blogs/", views.all_blogs, name="all_blogs"),
+    path("add_blog/", views.add_blog, name="add_blog"),
+    path("latest_blogs_ajax/", views.latest_blogs_ajax, name="latest_blogs_ajax"),
+    path("blog_detail/<int:blog_id>/", views.blog_detail, name="blog_detail"),
+    # path("delete_blog/<int:blog_id>/", views.delete_blog, name="delete_blog"),
     path("home/", views.home, name="home"),
     path("<str:room>/", views.room, name="room"),
     path("home/checkview/", views.checkview, name="checkview"),
     path("send", views.send, name="send"),
     path("getMessages/<str:room>/", views.getMessages, name="getMessages"),
-    
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

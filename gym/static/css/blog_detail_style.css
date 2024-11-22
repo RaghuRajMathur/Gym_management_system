@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Alkatra&family=Cinzel:wght@400..900&family=Gruppo&family=Poppins:ital,wght@0,300;1,400&family=Roboto+Condensed:ital@1&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: white;
+    overflow-x: hidden;
+}
+
+.outer-box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.back-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.blog-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.blog-card {
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.blog-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-bottom: 2px solid white;
+    margin-bottom: 15px;
+}
+
+.blog-content h1 {
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 5px black;
+    font-family: "Ciznel",serif;
+    font-size: 2rem;
+    color:goldenrod;
+}
+
+.blog-content p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    font-family: "Ciznel",serif;
+}
+
+.blog-text p {
+    text-align: justify;
+    line-height: 1.8;
+    font-family: "Ciznel",serif;
+}
+
+.back-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.back-button .btn {
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: goldenrod;
+    color:#1f242d;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+.back-button .btn:hover {
+    background-color: #1f242d;
+}
