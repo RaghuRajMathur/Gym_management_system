@@ -17,7 +17,8 @@ openai.api_key = ""
 
 
 def index(request):
-    return render(request, "index.html")
+    blogs = Blog.objects.all()  # Fetch all blogs from the database
+    return render(request, "index.html", {"blogs": blogs})
 
 
 def custom_404_view(request, exception):
@@ -595,3 +596,55 @@ def personalized_diet_plan(request):
             diet_plan = generate_diet_plan(height, weight, sex, age, activity_level)
 
     return render(request, "personalized_diet_plan.html", locals())
+
+
+# Blogs:
+def blog_section(request):
+    latest_blogs = Blog.objects.order_by("-created_at")[:4]
+    return render(request, "blog_section.html", {"latest_blogs": latest_blogs})
+
+
+# For displaying all blogs on a dedicated page
+def all_blogs(request):
+    blogs = Blog.objects.order_by("-created_at")
+    return render(request, "all_blogs.html", {"blogs": blogs})
+
+
+# For adding a new blog (accessible from admin home)
+def add_blog(request):
+    if request.method == "POST":
+        title = request.POST["title"]
+        content = request.POST["content"]
+        image = request.FILES.get("image")  # Allow image upload
+        Blog.objects.create(title=title, content=content, image=image)
+        return redirect("admin_home")  # Redirect to the admin home page
+
+    return render(request, "add_blog.html")
+
+
+# For deleting a blog
+# def delete_blog(request, blog_id):
+#     blog = get_object_or_404(Blog, id=blog_id)
+#     blog.delete()
+#     return redirect("all_blogs")
+
+
+def latest_blogs_ajax(request):
+    latest_blogs = Blog.objects.order_by("-created_at")[:4]  # Fetch the latest 4 blogs
+    blogs_data = [
+        {
+            "blog_id": blog.id,
+            "title": blog.title,
+            "content": blog.content[:100],  # Limit content length
+            "image_url": blog.image.url if blog.image else "",
+        }
+        for blog in latest_blogs
+    ]
+    return JsonResponse({"latest_blogs": blogs_data})
+
+
+def blog_detail(request, blog_id):
+    blog = get_object_or_404(
+        Blog, id=blog_id
+    )  # Get the blog by ID, or return a 404 error if not found
+    return render(request, "blog_detail.html", {"blog": blog})

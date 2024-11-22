@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import date, datetime
+from django.urls import reverse
 
 # Create your models here.
 
@@ -99,3 +100,16 @@ class Message(models.Model):
     date = models.DateTimeField(default=datetime.now, blank=True)
     user = models.CharField(max_length=1000000)
     room = models.CharField(max_length=1000000)
+
+
+class Blog(models.Model):
+    title = models.CharField(max_length=200)
+    content = models.TextField()
+    image = models.ImageField(upload_to="blog_images/", null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def get_absolute_url(self):
+        return reverse("blog_detail", args=[str(self.id)])
+
+    def __str__(self):
+        return self.title
