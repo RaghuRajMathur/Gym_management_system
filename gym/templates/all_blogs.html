@@ -1,0 +1,41 @@
+{% load static %}
+{% include 'navbar.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Announcements</title>
+    <link rel="stylesheet" href="{% static 'css/all_blogs_style.css' %}">
+</head>
+
+<body>
+    <div class="outer-box">
+        <!-- Fixed background video -->
+        <video autoplay loop muted plays-inline class="back-video">
+            <source src="{% static 'images/bgvideo2.mp4' %}" type="video/mp4">
+        </video>
+
+        <!-- Blogs Section -->
+        <div class="blogs-container">
+            <h1 class="Announcement-heading">All Announcements</h1>
+            {% for blog in blogs %}
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="{{ blog.image.url }}" alt="{{ blog.title }}">
+                    </div>
+                    <div class="blog-content">
+                        <h2>{{ blog.title }}</h2>
+                        <p>{{ blog.content }}</p>
+                        <small>Published on: {{ blog.created_at }}</small>
+                    </div>
+                </div>
+            {% empty %}
+                <p class="no-blogs">No blogs available.</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Alkatra&family=Cinzel:wght@400..900&family=Gruppo&family=Poppins:ital,wght@0,300;1,400&family=Roboto+Condensed:ital@1&display=swap');
+.blog-section{
+    margin-top: 60px;
+    margin-bottom: 20px;
+    padding-top: 15px;
+    background-color: #fff9b3;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.blog-card {
+    width: 100%;
+    max-width: 400px;  /* Adjust card width as needed */
+    margin-bottom: 20px;
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: #1f242d;
+}
+
+.card-img-top {
+    border-radius: 8px 8px 0 0;
+    object-fit: cover;
+    height: 200px;  /* Adjust image height as needed */
+}
+
+.card-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-title {
+    font-size: 1.25em;
+    font-family: "Ciznel",serif;
+    color: goldenrod;
+    font-weight: bold;
+    align-self: center;
+}
+
+.card-text {
+    font-size: 1em;
+    color: #555;
+    font-family: "Ciznel",serif;
+    color:#fff9b3;
+}
+
+.btn {
+    background-color: goldenrod;
+    color:#1f242d ;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+@media (max-width: 768px) {
+    .blog-card {
+        grid-template-columns: 1fr; /* Stack the cards on smaller screens */
+    }
+}
+.card-img-top {
+    height: 150px;
+    object-fit: cover;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 95%;
+    align-self: center;
+}
+
+.blog-head{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Ciznel",serif;
+    font-size: 4rem;
+    color:#1f242d;
+    margin-bottom: 40px;
+    margin-top: 35px;
+}
+
+.col-6 {
+    flex: 0 0 calc(50% - 1rem); /* Two cards per row */
+    margin: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .col-6 {
+        flex: 0 0 100%; /* Full width for small screens */
+    }
+}
