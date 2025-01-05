@@ -1,0 +1,178 @@
+/* Reset and base styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: black;
+    background-color: white;
+}
+
+header, section, footer {
+    padding: 20px;
+}
+
+/* Header Styles */
+/* header {
+    background-color: white;
+    color: black;
+    border-bottom: 1px solid #ddd;
+} */
+
+.main-title {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.main-text h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.main-text p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.main-btn {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.main-btn:hover {
+    background-color: #333;
+}
+
+/* About Section */
+.about {
+    background-color: white;
+    color: black;
+}
+
+.about-info h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.abt-text {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.about-btn {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.about-btn:hover {
+    background-color: #333;
+}
+
+.about-img img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+/* Workout Section */
+#workout {
+    background-color: white;
+    color: black;
+    padding: 50px 20px;
+}
+
+.work-title h3 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.service {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.service i {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.service h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.service p {
+    font-size: 1.2em;
+}
+
+/* Testimonial Section */
+#testimonial {
+    background-color: white;
+    color: black;
+    padding: 50px 20px;
+}
+
+.title {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.client-center .testimonial {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.testimonial h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.testimonial p {
+    font-size: 1.2em;
+}
+
+/* Classes Section */
+#classes {
+    background-color: white;
+    color: black;
+    padding: 50px 20px;
+}
+
+.classes-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.class-item {
+    width: 30%;
+    margin-bottom: 30px;
+}
+
+.class-item .img-container img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.class-item .text-container {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.class-item h4 {
+    font-size: 1.5em;
+}
+
+/* Footer Styles */
+footer {
+    background-color: white;
+    color: black;
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #ddd;
+}
