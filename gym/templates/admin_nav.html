@@ -7,7 +7,7 @@
 <nav>
         <ul class="sidebar">
           <li onclick=hideSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
-          <li><a href="{% url 'index' %}">Home</a></li>
+          <li><a href="{% url 'admin_home' %}">Admin Home</a></li>
           <li class="dropdown">
             <a href="#">Enquiry
               <i class="fa-solid fa-chevron-down" style="font-size: 12px; margin-left: 10px;"></i>
@@ -62,7 +62,7 @@
         <ul>
           <!-- ACTUAL NAVBAR  -->
           <li><a href="{% url 'index' %}"><img src="{% static 'images/gymlogo.png' %}" alt="Gym logo" class="navbar-logo"></a></li>
-          <li class="hideOnMobile"><a href="{% url 'index' %}">Home
+          <li class="hideOnMobile"><a href="{% url 'admin_home' %}">Admin Home
           </a>
           <li class="hideOnMobile dropdown">
             <a href="#">Enquiry
