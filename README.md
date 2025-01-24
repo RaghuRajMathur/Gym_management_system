@@ -99,9 +99,6 @@ This project is configured for deployment on **Vercel**. Use the included `verce
 - Maintain a detailed list of gym equipment.
 - Update equipment availability and maintenance records.
 
-### Personalized Diet Plan
-- Generate AI-based diet plans based on user input.
-
 ### Enquiry System
 - Handle and respond to user queries through the admin panel.
 
