@@ -1,32 +1,58 @@
-# Gym Management System
+Gym Management System
 
-A comprehensive Gym Management System built using **Python** and **Django**, designed to streamline and automate various operations in gym management. This project offers robust features for handling memberships, equipment, and personalized diet plans.
+A comprehensive Gym Management System built using **Python** and **Django**, designed to streamline and automate gym operations such as membership management, equipment tracking, and personalized diet plans.
 
 ## Features
 
-- **Membership Management**: Add, view, and manage gym members efficiently.
-- **Equipment Tracking**: Maintain records of gym equipment, including availability and maintenance.
-- **Personalized Diet Plans**: Generate AI-based diet plans for members based on their input (height, weight, sex, etc.).
-- **Enquiry Handling**: Manage and respond to member and visitor queries seamlessly.
-- **User Authentication**: Secure login and registration system for members and admin.
-- **Responsive UI**: A clean and user-friendly interface for easy navigation.
+- **Membership Management**: Add, view, and manage gym members effectively.
+- **Equipment Tracking**: Track gym equipment availability and maintenance status.
+- **User Authentication**: Secure login system for members and administrators.
+- **Enquiry Handling**: Manage member queries through an intuitive interface.
+- **Responsive UI**: A user-friendly and visually appealing design.
 
 ## Technologies Used
 
 - **Backend**: Python, Django Framework
-- **Frontend**: HTML, CSS, JavaScript, Bootstrap
-- **Database**: SQLite (default), with support for other databases
-- **AI Integration**: AI-based diet plan generation using ChatGPT-like models
+- **Frontend**: HTML, CSS, JavaScript
+- **Database**: SQLite
+- **Hosting**: Vercel (for deployment)
+- **Other Tools**: `.env` for environment variables, `vercel.json` for deployment configuration
 
-## Prerequisites
+## File Structure
 
-To run this project, ensure you have the following installed:
+```
+Gym_Management_System/
+├── gym/
+│   ├── static/
+│   │   └── script/
+│   ├── templates/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── models.py
+│   ├── tests.py
+│   ├── utils.py
+│   └── views.py
+├── GymManagementDjango/
+│   ├── __pycache__/
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── media/
+├── static/
+├── .env
+├── .gitattributes
+├── .gitignore
+├── buildfiles.sh
+├── db.sqlite3
+├── manage.py
+├── requirements.txt
+└── vercel.json
+```
 
-- Python 3.7 or above
-- pip (Python package manager)
-- Django 4.x
-
-## Getting Started
+## Setup and Installation
 
 1. **Clone the Repository**:
    ```bash
@@ -37,7 +63,7 @@ To run this project, ensure you have the following installed:
 2. **Set Up Virtual Environment**:
    ```bash
    python -m venv env
-   source env/bin/activate  # On Windows: env\Scripts\activate
+   source env/bin/activate  # On Windows: env\\Scripts\\activate
    ```
 
 3. **Install Dependencies**:
@@ -51,7 +77,7 @@ To run this project, ensure you have the following installed:
    python manage.py migrate
    ```
 
-5. **Run the Server**:
+5. **Run the Development Server**:
    ```bash
    python manage.py runserver
    ```
@@ -59,76 +85,49 @@ To run this project, ensure you have the following installed:
 6. **Access the Application**:
    Open your browser and navigate to `http://127.0.0.1:8000`.
 
-## File Structure
+## Deployment
 
-```
-gym-management-system/
-├── gym_management/
-│   ├── settings.py
-│   ├── urls.py
-│   ├── wsgi.py
-│   └── ...
-├── members/
-│   ├── models.py
-│   ├── views.py
-│   ├── forms.py
-│   └── templates/
-├── equipment/
-│   ├── models.py
-│   ├── views.py
-│   └── templates/
-├── templates/
-│   ├── base.html
-│   ├── member_home.html
-│   └── ...
-├── static/
-│   ├── css/
-│   ├── js/
-│   └── images/
-├── manage.py
-├── requirements.txt
-└── README.md
-```
+This project is configured for deployment on **Vercel**. Use the included `vercel.json` and `buildfiles.sh` for setup.
 
 ## Key Functionalities
 
 ### Membership Management
-- Add, update, and delete member details.
-- View a detailed list of active members.
+- Add, update, and delete member records.
+- View a list of active gym members.
 
-### Equipment Management
-- Add and track gym equipment.
-- Update the status of equipment (e.g., available, under maintenance).
+### Equipment Tracking
+- Maintain a detailed list of gym equipment.
+- Update equipment availability and maintenance records.
 
 ### Personalized Diet Plan
-- Members input their details (height, weight, goals, etc.).
-- The system generates a personalized diet plan using AI.
+- Generate AI-based diet plans based on user input.
 
 ### Enquiry System
-- Handle queries submitted by members or visitors.
-- Admin can view and respond to queries from the dashboard.
+- Handle and respond to user queries through the admin panel.
 
 ## Screenshots
+- index page : ![image](https://github.com/user-attachments/assets/88d1be37-ad23-42a3-94ef-d9d90b7d7297)
+- Why choose Us : ![image](https://github.com/user-attachments/assets/05f750cd-9b1e-4c57-ab92-ed210bd741b9)
+- testimonials : ![image](https://github.com/user-attachments/assets/60999c39-d9f6-45d6-bec6-3fed7e37bfc4)
+- Our classes : ![image](https://github.com/user-attachments/assets/602e70e5-052f-4d94-abce-8030c85229e5)
+- annonuncements : ![image](https://github.com/user-attachments/assets/982d264a-b9f6-4f42-82df-5684673d5ac4)
+- Admin Login : ![image](https://github.com/user-attachments/assets/7d7ca37d-28fc-4fe4-9680-09c902d0dcca)
+- member login : ![image](https://github.com/user-attachments/assets/90910d7d-6666-4dd2-8c88-5217eb694051)
+- member plan : ![image](https://github.com/user-attachments/assets/904d79f8-4d7b-4d72-aee7-d491590e65d2)
+- contact page : ![image](https://github.com/user-attachments/assets/15d109dc-d9b2-4948-ac25-82c75c0090e5)
+- admin dashboard : ![image](https://github.com/user-attachments/assets/f5800126-2567-4146-a83f-88b9debce8cb)
+- member dashboard : ![image](https://github.com/user-attachments/assets/685cc94d-fdef-4617-9355-7c368c889df9)
 
+## License
 
-
-## Contributing
-
-Contributions are welcome! Here's how you can contribute:
-
-1. Fork the repository.
-2. Create a feature branch: `git checkout -b feature-name`.
-3. Commit your changes: `git commit -m 'Add feature'`.
-4. Push to the branch: `git push origin feature-name`.
-5. Open a pull request.
+This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
-For any inquiries or support:
-
-- **Email**: your.email@example.com
-- **GitHub**: RaghuRahMathur(https://github.com/yourusername)
+For inquiries or support, contact:
+- **Email**: raghuu715@gmailcom
+- **GitHub**: RaghuRajMathur(https://github.com/RaghuRajMathur)
 
 ---
 
-Thank you for using the Gym Management System! 💪
+Let me know if you'd like to modify anything!
