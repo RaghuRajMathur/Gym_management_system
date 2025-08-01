@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from dotenv import load_dotenv
-
 # Load environment variables from .env file
 load_dotenv()
 from pathlib import Path
@@ -28,11 +27,22 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-nh2d$ws2n=8+!_i+@#z22&h^a(-8wro=c-(lu9l#4&n4+*ccu_"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
 # ALLOWED_HOSTS = ['.vercel.app','127.0.0.1','.now.sh']
-ALLOWED_HOST = ['.vercel.app', '127.0.0.1', '.now.sh']
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    '.vercel.app',
+    '.now.sh',
+    'gym-management-system-8y8d5gexe-raghu-715s-projects.vercel.app',
+]
 
+
+if 'VERCEL' in os.environ:
+    ALLOWED_HOSTS = ['*']
+else:
+    ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [

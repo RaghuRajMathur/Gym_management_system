@@ -53,7 +53,7 @@ urlpatterns = [
     path("checkview/", views.checkview, name="checkview"),
     path("send/", views.send, name="send"),
     path("getMessages/<str:room>/", views.getMessages, name="getMessages"),
-    path("<str:room>/", views.room, name="room"),  # Move this to the end
+    path("<str:room>/", views.room, name="room"),  # Keep this at the end
 ]
 
 # Static files handling
