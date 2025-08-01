@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from dotenv import load_dotenv
-import openai
 
 # Load environment variables from .env file
 load_dotenv()
