@@ -1,3 +1,11 @@
-.git
+*.pyc
 __pycache__
-migrations
+.env
+.venv
+env/
+venv/
+ENV/
+*.sqlite3
+media/
+staticfiles/
+node_modules/
