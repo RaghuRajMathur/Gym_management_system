@@ -6,4 +6,3 @@ asgiref==3.8.1
 sqlparse==0.5.1
 tzdata==2024.2
 whitenoise==6.6.0
-openai==1.35.3
